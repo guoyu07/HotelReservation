@@ -1,16 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using ITOps.ViewModelComposition;
+using ITOps.ViewModelComposition.Gateway;
+using ITOps.ViewModelComposition.Mvc;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Configuration;
-using ITOps.ViewModelComposition;
-using ITOps.ViewModelComposition.Mvc;
-using ITOps.ViewModelComposition.Gateway;
 
 namespace HotelReservation
 {
