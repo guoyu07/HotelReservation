@@ -6,6 +6,6 @@ namespace ITOps.ViewModelComposition
     public interface IInterceptRoutes
     {
         bool Matches(RouteData routeData, string httpVerb, HttpRequest request);
-        bool AllowCachingByUrl { get; }
+        //bool AllowCachingByUrl { get; }
     }
 }
