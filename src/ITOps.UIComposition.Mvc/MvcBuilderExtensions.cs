@@ -24,7 +24,7 @@ namespace ITOps.UIComposition.Mvc
             foreach (var fileName in fileNames)
             {
                 var assembly = AssemblyLoader.Load(fileName);
-                var attribute = assembly.GetCustomAttribute<UICompositionSupportAttribute>();
+                var attribute = assembly.GetCustomAttribute<RegisterAssemblyForUICompositionAttribute>();
 
                 if (attribute != null)
                 {
