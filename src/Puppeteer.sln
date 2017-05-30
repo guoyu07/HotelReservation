@@ -21,11 +21,15 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Payments.API.Host", "Paymen
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomersRegistry.API.Host", "CustomersRegistry.API.Host\CustomersRegistry.API.Host.csproj", "{76CD0837-6066-4E30-A83B-315238AE9B0B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HotelReservation", "HotelReservation\HotelReservation.csproj", "{97AB633B-BBA2-48D9-B134-E7389B4F0F19}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HotelReservation", "HotelReservation\HotelReservation.csproj", "{97AB633B-BBA2-48D9-B134-E7389B4F0F19}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{10FB8E8F-35B6-4E0F-A0B8-D355195A56EE}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Customers Registry", "Customers Registry", "{7384DBE3-9DA1-48FD-81F6-18A5319BC97B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomersRegistry.ViewModelComposition", "CustomerRegistry.ViewModelComposition\CustomersRegistry.ViewModelComposition.csproj", "{3C5543C9-32C2-4883-AF51-32E941810387}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomersRegistry.ViewComponents", "CustomersRegistry.ViewComponents\CustomersRegistry.ViewComponents.csproj", "{CFADF628-37B1-429A-AB94-83523ED088B3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -69,6 +73,14 @@ Global
 		{97AB633B-BBA2-48D9-B134-E7389B4F0F19}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{97AB633B-BBA2-48D9-B134-E7389B4F0F19}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{97AB633B-BBA2-48D9-B134-E7389B4F0F19}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3C5543C9-32C2-4883-AF51-32E941810387}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3C5543C9-32C2-4883-AF51-32E941810387}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3C5543C9-32C2-4883-AF51-32E941810387}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3C5543C9-32C2-4883-AF51-32E941810387}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CFADF628-37B1-429A-AB94-83523ED088B3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CFADF628-37B1-429A-AB94-83523ED088B3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CFADF628-37B1-429A-AB94-83523ED088B3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CFADF628-37B1-429A-AB94-83523ED088B3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -82,5 +94,7 @@ Global
 		{5C4575B0-F227-40EB-8A87-5ADCC2F152EF} = {10FB8E8F-35B6-4E0F-A0B8-D355195A56EE}
 		{63ED40BC-4FC7-4CD0-9FA0-4982A4E140EF} = {10FB8E8F-35B6-4E0F-A0B8-D355195A56EE}
 		{76CD0837-6066-4E30-A83B-315238AE9B0B} = {7384DBE3-9DA1-48FD-81F6-18A5319BC97B}
+		{3C5543C9-32C2-4883-AF51-32E941810387} = {7384DBE3-9DA1-48FD-81F6-18A5319BC97B}
+		{CFADF628-37B1-429A-AB94-83523ED088B3} = {7384DBE3-9DA1-48FD-81F6-18A5319BC97B}
 	EndGlobalSection
 EndGlobal
