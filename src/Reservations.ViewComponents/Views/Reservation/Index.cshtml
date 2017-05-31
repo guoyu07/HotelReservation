@@ -3,4 +3,7 @@
 }
 
 <h2>@ViewData["Title"]</h2>
-@await Component.InvokeAsync("ReservationSummaryCustomerDetails", Model);
+<form action="/Reservation/Submit" method="post">
+    @await Component.InvokeAsync("ReservationSummaryCustomerDetails", Model)
+    <input type="submit" value="Reserve..." />
+</form>
