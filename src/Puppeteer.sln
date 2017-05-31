@@ -31,6 +31,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomersRegistry.ViewModel
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomersRegistry.ViewComponents", "CustomersRegistry.ViewComponents\CustomersRegistry.ViewComponents.csproj", "{CFADF628-37B1-429A-AB94-83523ED088B3}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Reservations", "Reservations", "{8751E1C0-4AA8-497F-857B-EF5BEB2CE88B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Reservations.ViewComponents", "Reservations.ViewComponents\Reservations.ViewComponents.csproj", "{5359DA9B-71FF-4279-AAE8-1DB0E2E467F7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -81,6 +85,10 @@ Global
 		{CFADF628-37B1-429A-AB94-83523ED088B3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CFADF628-37B1-429A-AB94-83523ED088B3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CFADF628-37B1-429A-AB94-83523ED088B3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5359DA9B-71FF-4279-AAE8-1DB0E2E467F7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5359DA9B-71FF-4279-AAE8-1DB0E2E467F7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5359DA9B-71FF-4279-AAE8-1DB0E2E467F7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5359DA9B-71FF-4279-AAE8-1DB0E2E467F7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -96,5 +104,6 @@ Global
 		{76CD0837-6066-4E30-A83B-315238AE9B0B} = {7384DBE3-9DA1-48FD-81F6-18A5319BC97B}
 		{3C5543C9-32C2-4883-AF51-32E941810387} = {7384DBE3-9DA1-48FD-81F6-18A5319BC97B}
 		{CFADF628-37B1-429A-AB94-83523ED088B3} = {7384DBE3-9DA1-48FD-81F6-18A5319BC97B}
+		{5359DA9B-71FF-4279-AAE8-1DB0E2E467F7} = {8751E1C0-4AA8-497F-857B-EF5BEB2CE88B}
 	EndGlobalSection
 EndGlobal

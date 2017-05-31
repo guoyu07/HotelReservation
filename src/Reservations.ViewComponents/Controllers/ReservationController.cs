@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 
-namespace HotelReservation
+namespace Reservations.ViewComponents
 {
     public class ReservationController : Controller
     {

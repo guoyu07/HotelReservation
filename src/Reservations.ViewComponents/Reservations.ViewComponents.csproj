@@ -5,20 +5,17 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Views\Reservation\Components\ReservationSummaryCustomerDetails\Default.cshtml" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <EmbeddedResource Include="Views\Reservation\Components\ReservationSummaryCustomerDetails\Default.cshtml" />
+    <EmbeddedResource Include="Views\Reservation\Index.cshtml" />
+    <EmbeddedResource Include="Views\Reservation\Submit.cshtml" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore" Version="1.1.2" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="1.1.3" />
   </ItemGroup>
-
+  
   <ItemGroup>
     <ProjectReference Include="..\ITOps.UIComposition.Mvc\ITOps.UIComposition.Mvc.csproj" />
   </ItemGroup>
-  
+
 </Project>
