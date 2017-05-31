@@ -15,7 +15,7 @@ namespace CustomersRegistry.ViewModelComposition
 
             return HttpMethods.IsGet(httpVerb)
                 && controller.ToLowerInvariant() == "reservation"
-                && action.ToLowerInvariant() == "summary";
+                && action.ToLowerInvariant() == "index";
         }
 
         public Task Handle(dynamic vm, RouteData routeData, HttpRequest request)
@@ -35,6 +35,13 @@ namespace CustomersRegistry.ViewModelComposition
                  * ready to be filled in the form
                  */
             }
+
+            vm.CustomerFirstName = "Mauro";
+            vm.CustomerLastName = "Servienti";
+            vm.CustomerAddress = "v. Antonio Gramsci, 64";
+            vm.CustomerCity = "Milano";
+            vm.CustomerZipCode = "20100";
+            vm.CustomerPhoneNumber = "+39 337 123 098 12";
 
             return Task.CompletedTask;
         }
