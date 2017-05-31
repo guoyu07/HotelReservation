@@ -1,7 +1,6 @@
-
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "New reservation";
 }
 
-<h2>Index</h2>
+<h2>@ViewData["Title"]</h2>
 @await Component.InvokeAsync("ReservationSummaryCustomerDetails", Model);

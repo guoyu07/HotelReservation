@@ -4,10 +4,6 @@
     <TargetFramework>netcoreapp1.1</TargetFramework>
     <PackageTargetFallback>portable-net45+win8</PackageTargetFallback>
   </PropertyGroup>
-
-  <ItemGroup>
-    <Folder Include="Views\Home\" />
-  </ItemGroup>
   <ItemGroup>
     <PackageReference Include="BuildBundlerMinifier" Version="2.4.337" />
     <PackageReference Include="Microsoft.ApplicationInsights.AspNetCore" Version="2.0.0" />
@@ -21,10 +17,14 @@
   <ItemGroup>
     <ProjectReference Include="..\CustomerRegistry.ViewModelComposition\CustomersRegistry.ViewModelComposition.csproj" />
     <ProjectReference Include="..\CustomersRegistry.ViewComponents\CustomersRegistry.ViewComponents.csproj" />
+    <ProjectReference Include="..\ITOps.UIComposition.Mvc\ITOps.UIComposition.Mvc.csproj" />
     <ProjectReference Include="..\ITOps.ViewModelComposition.Gateway\ITOps.ViewModelComposition.Gateway.csproj" />
     <ProjectReference Include="..\ITOps.ViewModelComposition.Mvc\ITOps.ViewModelComposition.Mvc.csproj" />
     <ProjectReference Include="..\ITOps.ViewModelComposition\ITOps.ViewModelComposition.csproj" />
+    <ProjectReference Include="..\Payments.ViewComponents\Payments.ViewComponents.csproj" />
+    <ProjectReference Include="..\Payments.ViewModelComposition\Payments.ViewModelComposition.csproj" />
     <ProjectReference Include="..\Reservations.ViewComponents\Reservations.ViewComponents.csproj" />
+    <ProjectReference Include="..\Reservations.ViewModelComposition\Reservations.ViewModelComposition.csproj" />
   </ItemGroup>
 
   <ItemGroup>
