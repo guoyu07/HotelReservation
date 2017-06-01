@@ -3,7 +3,10 @@
 }
 
 <h2>@ViewData["Title"]</h2>
-<form action="/Reservation/Submit" method="post">
+<form action="/reservation/new" method="post">
+    <input type="hidden" id="ReservationId" name="ReservationId" value="@Model.ReservationId">
+
     @await Component.InvokeAsync("ReservationSummaryCustomerDetails", Model)
+    
     <input type="submit" value="Reserve..." />
 </form>

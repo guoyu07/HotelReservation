@@ -5,8 +5,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <EmbeddedResource Include="Views\Reservation\Index.cshtml" />
-    <EmbeddedResource Include="Views\Reservation\Submit.cshtml" />
+    <EmbeddedResource Include="Views\Reservation\New.cshtml" />
+    <EmbeddedResource Include="Views\Reservation\Details.cshtml" />
   </ItemGroup>
 
   <ItemGroup>

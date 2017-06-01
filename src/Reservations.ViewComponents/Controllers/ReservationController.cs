@@ -1,16 +1,23 @@
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System;
 
 namespace Reservations.ViewComponents
 {
     public class ReservationController : Controller
     {
-        public IActionResult Index()
+        public IActionResult New()
         {
             return View();
         }
 
         [HttpPost]
-        public IActionResult Submit()
+        public IActionResult New(IFormCollection form)
+        {
+            return View();
+        }
+
+        public IActionResult Details(Guid rid)
         {
             return View();
         }

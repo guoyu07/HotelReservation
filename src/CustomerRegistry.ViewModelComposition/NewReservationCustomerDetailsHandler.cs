@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace CustomersRegistry.ViewModelComposition
 {
-    class ReservationSummaryCustomerDetailsInterceptor : IHandleRequests
+    class NewReservationCustomerDetailsHandler : IHandleRequests
     {
         public bool Matches(RouteData routeData, string httpVerb, HttpRequest request)
         {
@@ -15,7 +15,7 @@ namespace CustomersRegistry.ViewModelComposition
 
             return HttpMethods.IsGet(httpVerb)
                 && controller.ToLowerInvariant() == "reservation"
-                && action.ToLowerInvariant() == "index";
+                && action.ToLowerInvariant() == "new";
         }
 
         public Task Handle(dynamic vm, RouteData routeData, HttpRequest request)
