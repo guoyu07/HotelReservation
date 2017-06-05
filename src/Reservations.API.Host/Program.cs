@@ -8,7 +8,7 @@ namespace Reservations.API.Host
     {
         static void Main(string[] args)
         {
-            var baseAddress = ConfigurationManager.AppSettings["baseAddress"] ?? "http://localhost:8181";
+            var baseAddress = ConfigurationManager.AppSettings["baseAddress"] ?? "http://localhost:8183";
 
             using (var webApp = WebApp.Start<Startup>(url: baseAddress))
             {
