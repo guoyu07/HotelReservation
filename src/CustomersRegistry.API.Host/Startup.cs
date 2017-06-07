@@ -1,4 +1,5 @@
-﻿using Castle.Windsor;
+﻿using Castle.MicroKernel.Registration;
+using Castle.Windsor;
 using Microsoft.Owin.Cors;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
@@ -73,6 +74,8 @@ namespace CustomersRegistry.API.Host
                 .ConfigureAwait(false)
                 .GetAwaiter()
                 .GetResult();
+
+            container.Register(Component.For<IMessageSession>().Instance(endpointInstance));
         }
     }
 }
