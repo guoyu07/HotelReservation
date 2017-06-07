@@ -1,6 +1,9 @@
 ﻿using Microsoft.Owin.Cors;
 using Newtonsoft.Json.Serialization;
 using Owin;
+using Radical.Bootstrapper;
+using Radical.Bootstrapper.Windsor.WebAPI.Infrastructure;
+using System;
 using System.Net.Http.Formatting;
 using System.Web.Http;
 using System.Web.Http.Batch;
@@ -11,13 +14,16 @@ namespace Reservations.API.Host
     {
         public void Configuration(IAppBuilder appBuilder)
         {
+            var bootstrapper = new WindsorBootstrapper(AppDomain.CurrentDomain.BaseDirectory, filter: "Reservations*.*");
+            var container = bootstrapper.Boot();
+
             var config = new HttpConfiguration();
             var server = new HttpServer(config);
 
             config.Formatters.Clear();
             config.Formatters.Add(new JsonMediaTypeFormatter());
 
-            //config.DependencyResolver = new WindsorDependencyResolver(container);
+            config.DependencyResolver = new WindsorDependencyResolver(container);
 
             config.Formatters
                 .JsonFormatter
