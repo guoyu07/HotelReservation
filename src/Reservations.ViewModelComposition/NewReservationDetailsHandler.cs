@@ -19,7 +19,7 @@ namespace Reservations.ViewModelComposition
                 && action.ToLowerInvariant() == "new";
         }
 
-        public Task Handle(dynamic vm, RouteData routeData, HttpRequest request)
+        public Task HandleAsync(dynamic vm, RouteData routeData, HttpRequest request)
         {
             vm.ReservationId = Guid.NewGuid();
             

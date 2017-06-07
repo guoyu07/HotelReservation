@@ -18,7 +18,7 @@ namespace CustomersRegistry.ViewModelComposition
                 && action.ToLowerInvariant() == "new";
         }
 
-        public Task Handle(dynamic vm, RouteData routeData, HttpRequest request)
+        public Task HandleAsync(dynamic vm, RouteData routeData, HttpRequest request)
         {
             var form = request.Form;
             var rid = request.Form["ReservationId"][0];

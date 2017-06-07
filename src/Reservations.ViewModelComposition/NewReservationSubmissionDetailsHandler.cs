@@ -19,7 +19,7 @@ namespace Reservations.ViewModelComposition
                 && action.ToLowerInvariant() == "new";
         }
 
-        public Task Handle(dynamic vm, RouteData routeData, HttpRequest request)
+        public Task HandleAsync(dynamic vm, RouteData routeData, HttpRequest request)
         {
             var form = request.Form;
             var rid = request.Form["ReservationId"][0];
@@ -27,7 +27,7 @@ namespace Reservations.ViewModelComposition
 
             /*
              * Get reservation details from incoming FORM
-             * and post them to Reservations API
+             * and post them to Reservations write API
              */
 
             return Task.CompletedTask;
