@@ -1,11 +1,11 @@
 ﻿using ITOps.ViewModelComposition;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Routing;
-using System.Threading.Tasks;
+using Newtonsoft.Json;
 using System;
 using System.Net.Http;
 using System.Net.Http.Headers;
-using Newtonsoft.Json;
+using System.Threading.Tasks;
 
 namespace CustomersRegistry.ViewModelComposition
 {
@@ -22,7 +22,7 @@ namespace CustomersRegistry.ViewModelComposition
                 && action.ToLowerInvariant() == "new";
         }
 
-        public Task HandleAsync(dynamic vm, RouteData routeData, HttpRequest request)
+        public async Task HandleAsync(dynamic vm, RouteData routeData, HttpRequest request)
         {
             CustomersRegistryDetails customerDetails;
 
@@ -33,8 +33,7 @@ namespace CustomersRegistry.ViewModelComposition
                  * based on current user id and pre-fill 
                  * the submission form
                  */
-                customerDetails = GetAuthenticatedUserDetailsAsync();
-
+                customerDetails = await GetAuthenticatedUserDetailsAsync();
                 MapCustomerDetailsToDynamic(vm, customerDetails);
             }
             else
@@ -45,12 +44,9 @@ namespace CustomersRegistry.ViewModelComposition
                  * 
                  * for now we will get teh data from the read API
                  */
-                customerDetails = GetAuthenticatedUserDetailsAsync();
-
+                customerDetails = await GetAuthenticatedUserDetailsAsync();
                 MapCustomerDetailsToDynamic(vm, customerDetails);
             }
-
-            return Task.CompletedTask;
         }
 
         private static void MapCustomerDetailsToDynamic(dynamic vm, CustomersRegistryDetails customerDetails)
@@ -63,14 +59,10 @@ namespace CustomersRegistry.ViewModelComposition
             vm.CustomerPhoneNumber = customerDetails.CustomerPhoneNumber; // "+39 337 123 098 12";
         }
 
-        private CustomersRegistryDetails GetAuthenticatedUserDetailsAsync()
+        private async Task<CustomersRegistryDetails> GetAuthenticatedUserDetailsAsync()
         {
-            HttpResponseMessage result = null;
-
-            // call the read API
-            Task.Run(() => { result = GetWebPageHtmlSizeAsync().Result; }).Wait();
-
-            return JsonConvert.DeserializeObject<CustomersRegistryDetails>(result.Content.ReadAsStringAsync().Result);
+            var result = await GetWebPageHtmlSizeAsync();
+            return JsonConvert.DeserializeObject<CustomersRegistryDetails>(await result.Content.ReadAsStringAsync());
         }
 
         private async Task<HttpResponseMessage> GetWebPageHtmlSizeAsync()
