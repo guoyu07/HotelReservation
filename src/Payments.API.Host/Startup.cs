@@ -1,5 +1,7 @@
-﻿using Microsoft.Owin.Cors;
+﻿using Castle.Windsor;
+using Microsoft.Owin.Cors;
 using Newtonsoft.Json.Serialization;
+using NServiceBus;
 using Owin;
 using Radical.Bootstrapper;
 using Radical.Bootstrapper.Windsor.WebAPI.Infrastructure;
@@ -14,9 +16,17 @@ namespace Payments.API.Host
     {
         public void Configuration(IAppBuilder appBuilder)
         {
+            Console.Title = typeof(Startup).Namespace;
+
             var bootstrapper = new WindsorBootstrapper(AppDomain.CurrentDomain.BaseDirectory, filter: "Payments*.*");
             var container = bootstrapper.Boot();
 
+            ConfigureNServiceBus(container);
+            ConfigureWebAPI(appBuilder, container);
+        }
+
+        void ConfigureWebAPI(IAppBuilder appBuilder, IWindsorContainer container)
+        {
             var config = new HttpConfiguration();
             var server = new HttpServer(config);
 
@@ -49,6 +59,19 @@ namespace Payments.API.Host
 
             appBuilder.UseCors(CorsOptions.AllowAll);
             appBuilder.UseWebApi(config);
+        }
+
+        void ConfigureNServiceBus(IWindsorContainer container)
+        {
+            var endpointConfiguration = new EndpointConfiguration(typeof(Startup).Namespace);
+            endpointConfiguration.UseSerialization<NServiceBus.JsonSerializer>();
+            endpointConfiguration.UseTransport<LearningTransport>();
+            endpointConfiguration.UseContainer<WindsorBuilder>(c => c.ExistingContainer(container));
+
+            var endpointInstance = Endpoint.Start(endpointConfiguration)
+                .ConfigureAwait(false)
+                .GetAwaiter()
+                .GetResult();
         }
     }
 }
