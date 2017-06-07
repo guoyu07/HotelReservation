@@ -7,6 +7,8 @@
     <input type="hidden" id="ReservationId" name="ReservationId" value="@Model.ReservationId">
 
     @await Component.InvokeAsync("ReservationSummaryCustomerDetails", Model)
+    @await Component.InvokeAsync("ReservationSummaryPaymentDetails", Model)
+    @await Component.InvokeAsync("ReservationSummaryDetails", Model)
     
     <input type="submit" value="Reserve..." />
 </form>
