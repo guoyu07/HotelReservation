@@ -1,2 +1,26 @@
-﻿<h4>Credit Card</h4>
-@* credit card input fields here *@
+﻿@* credit card input fields here *@
+<h4>Credit Card Details</h4>
+<div>
+    <label for="CardType">Card Type:</label>
+    <select id="CardType" name="CardType">
+        <option value="0">Visa</option>
+        <option value="1">Mastercard</option>
+        <option value="2">Amax</option>
+    </select>
+</div>
+<div>
+    <label for="CardNumber">Card Number:</label>
+    <input type="text" id="CardNumber" name="CardNumber" value="@Model.CardNumber" />
+</div>
+<div>
+    <label for="ExpieryDateMonth">Expiery Date:</label>
+    <input type="text" id="ExpieryDateMonth" name="ExpieryDateMonth" value="@Model.ExpieryDateMonth" />
+    <input type="text" id="ExpieryDateYear" name="ExpieryDateYear" value="@Model.ExpieryDateYear" />
+</div>
+<div>
+    <label for="CCV">CCV:</label>
+    <input type="text" id="CCV" name="CCV" value="@Model.CCV" />
+</div>
+<div>
+    <input type="hidden" id="CustomerId" name="CustomerId" value="@Model.CustomerId" />
+</div>
