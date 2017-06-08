@@ -25,7 +25,7 @@ namespace Reservations.ViewModelComposition
             var rid = request.Form["ReservationId"][0];
             vm.ReservationId = new Guid(rid);
 
-            /*
+            /* TODO:
              * Get reservation details from incoming FORM
              * and post them to Reservations write API
              */

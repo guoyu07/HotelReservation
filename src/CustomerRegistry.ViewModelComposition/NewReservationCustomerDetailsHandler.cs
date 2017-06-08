@@ -61,11 +61,11 @@ namespace CustomersRegistry.ViewModelComposition
 
         private async Task<CustomersRegistryDetails> GetAuthenticatedUserDetailsAsync()
         {
-            var result = await GetWebPageHtmlSizeAsync();
+            var result = await CustomerReadAPIAsync();
             return JsonConvert.DeserializeObject<CustomersRegistryDetails>(await result.Content.ReadAsStringAsync());
         }
 
-        private async Task<HttpResponseMessage> GetWebPageHtmlSizeAsync()
+        private async Task<HttpResponseMessage> CustomerReadAPIAsync()
         {
             const string uri = "http://localhost:8181";
             const string url = "/api/customersread";
@@ -87,5 +87,6 @@ namespace CustomersRegistry.ViewModelComposition
         public string CustomerCity { get; set; }
         public string CustomerZipCode { get; set; }
         public string CustomerPhoneNumber { get; set; }
+        public string ReservationId { get; set; }
     }
 }

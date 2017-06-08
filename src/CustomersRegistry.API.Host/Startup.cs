@@ -14,6 +14,8 @@ using System.Web.Http.Batch;
 
 namespace CustomersRegistry.API.Host
 {
+    using Messages.Commands;
+
     public class Startup
     {
         public void Configuration(IAppBuilder appBuilder)
@@ -67,8 +69,13 @@ namespace CustomersRegistry.API.Host
         {
             var endpointConfiguration = new EndpointConfiguration(typeof(Startup).Namespace);
             endpointConfiguration.UseSerialization<NServiceBus.JsonSerializer>();
-            endpointConfiguration.UseTransport<LearningTransport>();
+            var transportExtensions = endpointConfiguration.UseTransport<LearningTransport>();
             endpointConfiguration.UseContainer<WindsorBuilder>(c => c.ExistingContainer(container));
+
+            var routing = transportExtensions.Routing();
+            routing.RouteToEndpoint(
+                messageType: typeof(SaveNewReservationCustomerDetails),
+                destination: "CustomersRegistry.Service.Component");
 
             var endpointInstance = Endpoint.Start(endpointConfiguration)
                 .ConfigureAwait(false)
