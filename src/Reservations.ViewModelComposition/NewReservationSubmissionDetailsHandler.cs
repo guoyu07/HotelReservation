@@ -43,7 +43,7 @@
             return Task.CompletedTask;
         }
 
-        private async Task PostReservationDetails(ReservationDetails reservationDetails)
+        private async Task PostReservationDetails(ReservationDetailsModel reservationDetails)
         {
             HttpContent jasonHttpContent = new StringContent(JsonConvert.SerializeObject(reservationDetails),
                 Encoding.UTF8, "application/json");
@@ -75,9 +75,9 @@
             return await httpClient.PostAsync(url, content);
         }
 
-        private ReservationDetails MapFormToReservationDetails(IFormCollection form)
+        private ReservationDetailsModel MapFormToReservationDetails(IFormCollection form)
         {
-            return new ReservationDetails
+            return new ReservationDetailsModel
             {
                 ReservationId = form["ReservationId"],
                 CustomerId = form["CustomerId"],
@@ -93,7 +93,7 @@
         }
     }
 
-    internal class ReservationDetails
+    internal class ReservationDetailsModel
     {
         public string ReservationId { get; set;}
         public string CustomerId { get; set; } 
