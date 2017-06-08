@@ -13,6 +13,8 @@ using System.Web.Http.Batch;
 
 namespace Reservations.API.Host
 {
+    using Messages.Commands;
+
     public class Startup
     {
         public void Configuration(IAppBuilder appBuilder)
@@ -66,8 +68,14 @@ namespace Reservations.API.Host
         {
             var endpointConfiguration = new EndpointConfiguration(typeof(Startup).Namespace);
             endpointConfiguration.UseSerialization<NServiceBus.JsonSerializer>();
-            endpointConfiguration.UseTransport<LearningTransport>();
             endpointConfiguration.UseContainer<WindsorBuilder>(c => c.ExistingContainer(container));
+
+            var transportExtensions = endpointConfiguration.UseTransport<LearningTransport>();
+            var routing = transportExtensions.Routing();
+            routing.RouteToEndpoint(
+                messageType: typeof(SaveNewReservationDetails),
+                destination: "Reservations.Service.NewReservationDetailsComponent");
+
 
             var endpointInstance = Endpoint.Start(endpointConfiguration)
                 .ConfigureAwait(false)

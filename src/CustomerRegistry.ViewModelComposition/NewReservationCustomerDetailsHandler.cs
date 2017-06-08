@@ -57,6 +57,7 @@ namespace CustomersRegistry.ViewModelComposition
             vm.CustomerCity = customerDetails.CustomerCity; // "Milano";
             vm.CustomerZipCode = customerDetails.CustomerZipCode; // "20100";
             vm.CustomerPhoneNumber = customerDetails.CustomerPhoneNumber; // "+39 337 123 098 12";
+            vm.CustomerId = customerDetails.CustomerId;
         }
 
         private async Task<CustomersRegistryDetails> GetAuthenticatedUserDetailsAsync()
@@ -88,5 +89,7 @@ namespace CustomersRegistry.ViewModelComposition
         public string CustomerZipCode { get; set; }
         public string CustomerPhoneNumber { get; set; }
         public string ReservationId { get; set; }
+        public string CustomerId { get; set; }
+
     }
 }

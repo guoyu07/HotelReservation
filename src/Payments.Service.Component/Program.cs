@@ -14,9 +14,9 @@ namespace Payments.Service.Component
 
         static async Task AsyncMain()
         {
-            Console.Title = "CustomersRegistry.Service.Component";
+            Console.Title = "Payments.Service.Component";
 
-            var endpointConfiguration = new EndpointConfiguration("CustomersRegistry.Service.Component");
+            var endpointConfiguration = new EndpointConfiguration("Payments.Service.Component");
             endpointConfiguration.UseSerialization<JsonSerializer>();
             endpointConfiguration.UsePersistence<LearningPersistence>();
             endpointConfiguration.UseTransport<LearningTransport>();

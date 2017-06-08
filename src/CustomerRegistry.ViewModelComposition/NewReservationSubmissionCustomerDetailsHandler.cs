@@ -27,10 +27,7 @@
         public Task HandleAsync(dynamic vm, RouteData routeData, HttpRequest request)
         {
             var form = request.Form;
-            var rid = request.Form["ReservationId"][0];
-
-            rid = form["ReservationId"][0];
-
+            
             /*  
              * Get Customer details from incoming FORM
              * and post them to Customers Registry API
@@ -53,6 +50,7 @@
                 CustomerZipCode = form["CustomerZipCode"],
                 CustomerPhoneNumber = form["CustomerPhoneNumber"],
                 ReservationId = form["ReservationId"],
+                CustomerId = form["CustomerId"],
             };
         }
 

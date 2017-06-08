@@ -9,5 +9,6 @@
         public string CustomerZipCode { get; set; }
         public string CustomerPhoneNumber { get; set; }
         public string ReservationId { get; set; }
+        public string CustomerId { get; set; }
     }
 }

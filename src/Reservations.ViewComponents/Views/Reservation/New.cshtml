@@ -5,10 +5,16 @@
 <h2>@ViewData["Title"]</h2>
 <form action="/reservation/new" method="post">
     <input type="hidden" id="ReservationId" name="ReservationId" value="@Model.ReservationId">
-
-    @await Component.InvokeAsync("ReservationSummaryCustomerDetails", Model)
-    @await Component.InvokeAsync("ReservationSummaryPaymentDetails", Model)
-    @await Component.InvokeAsync("ReservationSummaryDetails", Model)
-    
-    <input type="submit" value="Reserve..." />
+    <div>
+        @await Component.InvokeAsync("ReservationSummaryCustomerDetails", Model)
+    </div>
+    <div>
+        @await Component.InvokeAsync("ReservationSummaryPaymentDetails", Model)
+    </div>
+    <div>
+        @await Component.InvokeAsync("ReservationSummaryDetails", Model)
+    </div>
+    <div>
+        <input type="submit" value="Book Now!" />
+    </div>
 </form>

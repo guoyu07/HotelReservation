@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 
 namespace Reservations.ViewModelComposition
 {
+    using System.Runtime.InteropServices;
+
     class NewReservationDetailsHandler : IHandleRequests
     {
         public bool Matches(RouteData routeData, string httpVerb, HttpRequest request)
@@ -27,6 +29,16 @@ namespace Reservations.ViewModelComposition
              * Add reservation details here
              * such as Hotel and check-in/out dates
              */
+
+            vm.HotelName = "Sample Hotel";
+            vm.CheckIn = "15/07/2017";
+            vm.CheckOut = "17/07/2017";
+            vm.PayAtHotel = true;
+            vm.PayNow = false;
+            vm.CustomerComments = "";
+            vm.CustomerId = "";
+            vm.HotelId = Guid.NewGuid();
+            vm.PaymentId = Guid.NewGuid();
 
             return Task.CompletedTask;
         }

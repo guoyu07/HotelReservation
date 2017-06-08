@@ -9,7 +9,7 @@ namespace CustomersRegistry.ServiceComponent
     {
         public Task Handle(SaveNewReservationCustomerDetails message, IMessageHandlerContext context)
         {
-            Console.WriteLine("Procesing SaveNewReservationCustomerDetails for reservation: {0} and user: {1} {2}", message.ReservationId, message.CustomerFirstName, message.CustomerLastName);
+            Console.WriteLine("Procesing SaveNewReservationCustomerDetails for \r\n ReservationId: {0} \r\n User: {1} {2} \r\n CustomerId: {3}", message.ReservationId, message.CustomerFirstName, message.CustomerLastName, message.CustomerId);
 
             return Task.FromResult(0);
         }

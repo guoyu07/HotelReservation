@@ -1,5 +1,6 @@
 ﻿namespace CustomersRegistry.API.Host.Controllers
 {
+    using System;
     using System.Web.Http;
 
     [RoutePrefix("api/customersread")]
@@ -16,6 +17,7 @@
                 CustomerCity = "Milano",
                 CustomerZipCode = "20100",
                 CustomerPhoneNumber = "+39 337 123 098 12",
+                CustomerId = Guid.NewGuid(),
             };
         }
     }

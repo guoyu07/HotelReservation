@@ -69,9 +69,9 @@ namespace CustomersRegistry.API.Host
         {
             var endpointConfiguration = new EndpointConfiguration(typeof(Startup).Namespace);
             endpointConfiguration.UseSerialization<NServiceBus.JsonSerializer>();
-            var transportExtensions = endpointConfiguration.UseTransport<LearningTransport>();
             endpointConfiguration.UseContainer<WindsorBuilder>(c => c.ExistingContainer(container));
 
+            var transportExtensions = endpointConfiguration.UseTransport<LearningTransport>();
             var routing = transportExtensions.Routing();
             routing.RouteToEndpoint(
                 messageType: typeof(SaveNewReservationCustomerDetails),
