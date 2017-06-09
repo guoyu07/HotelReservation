@@ -1,10 +1,14 @@
 ﻿@* credit card input fields here *@
 <h4>Credit Card Details</h4>
+
+<div>
+    <label>Payment Amount:</label> @Model.PaymentAmount
+</div>
 <div>
     <label for="CardType">Card Type:</label>
     <select id="CardType" name="CardType">
-        <option value="0">Visa</option>
-        <option value="1">Mastercard</option>
+        <option value="0">Mastercard</option>
+        <option value="1" selected="selected">Visa</option>
         <option value="2">Amax</option>
     </select>
 </div>
@@ -22,5 +26,6 @@
     <input type="text" id="CCV" name="CCV" value="@Model.CCV" />
 </div>
 <div>
-    <input type="hidden" id="CustomerId" name="CustomerId" value="@Model.CustomerId" />
+    <input type="hidden" id="PaymentId" name="PaymentId" value="@Model.PaymentId" />
+    <input type="hidden" id="PaymentAmount" name="PaymentAmount" value="@Model.PaymentAmount" />
 </div>

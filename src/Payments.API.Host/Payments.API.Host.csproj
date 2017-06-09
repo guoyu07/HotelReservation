@@ -44,7 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controllers\PaymentsReadController.cs" />
-    <Compile Include="Controllers\ReservationsWriteController.cs" />
+    <Compile Include="Controllers\PaymentsWriteController.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />

@@ -31,9 +31,8 @@ namespace Payments.ViewModelComposition
             vm.ExpieryDateMonth = "09";
             vm.ExpieryDateYear = "20";
             vm.CCV = "***";
-
-            vm.CustomerId = Guid.NewGuid();
-
+            vm.PaymentAmount = "250";
+            vm.PaymentId = Guid.NewGuid();
             return Task.CompletedTask;
         }
     }

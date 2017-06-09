@@ -9,7 +9,6 @@
     using ITOps.ViewModelComposition;
     using Microsoft.AspNetCore.Http;
     using Microsoft.AspNetCore.Routing;
-    using Microsoft.Extensions.Primitives;
     using Newtonsoft.Json;
 
     class NewReservationSubmissionDetailsHandler : IHandleRequests
@@ -33,8 +32,8 @@
             // */
 
             var form = request.Form;
-            var rid = request.Form["ReservationId"][0];
-            vm.ReservationId = new Guid(rid);
+            //var rid = request.Form["ReservationId"][0];
+            //vm.ReservationId = new Guid(rid);
 
             var reservationDetails = MapFormToReservationDetails(form);
 
@@ -87,7 +86,6 @@
                 CheckOut = form["CheckOut"],
                 PayAtHotel = form["PayAtHotel"],
                 PayNow = form["PayNow"],
-                PaymentId = form["PaymentId"],
                 CustomerComments = form["CustomerComments"],
             };
         }

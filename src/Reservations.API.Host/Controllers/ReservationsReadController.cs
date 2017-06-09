@@ -1,5 +1,6 @@
 ﻿namespace Reservations.API.Host.Controllers
 {
+    using System;
     using System.Web.Http;
 
     [RoutePrefix("api/reservationsread")]
@@ -10,13 +11,10 @@
         {
             return new
             {
-                ReservationId = "",
-                CustomerId = "",
-                HotelId = "",
+                HotelId = Guid.NewGuid(),
                 CheckIn = "15/07/2017",
                 CheckOut = "17/07/2017",
                 PayAtHotel = true,
-                PaymentId = "",
                 CustomerComments = "",
                 HotelName = "Sample Hotel",
             };
