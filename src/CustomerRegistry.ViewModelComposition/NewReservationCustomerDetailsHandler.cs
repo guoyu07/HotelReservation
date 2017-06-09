@@ -9,6 +9,8 @@ using System.Threading.Tasks;
 
 namespace CustomersRegistry.ViewModelComposition
 {
+    using System.Collections.Generic;
+
     class NewReservationCustomerDetailsHandler : IHandleRequests
     {
         public bool Matches(RouteData routeData, string httpVerb, HttpRequest request)
@@ -63,7 +65,7 @@ namespace CustomersRegistry.ViewModelComposition
         private async Task<CustomersRegistryDetails> GetAuthenticatedUserDetailsAsync()
         {
             var result = await CustomerReadAPIAsync();
-            return JsonConvert.DeserializeObject<CustomersRegistryDetails>(await result.Content.ReadAsStringAsync());
+            return JsonConvert.DeserializeObject<IList<CustomersRegistryDetails>>(await result.Content.ReadAsStringAsync())[0];
         }
 
         private async Task<HttpResponseMessage> CustomerReadAPIAsync()

@@ -32,8 +32,8 @@
             // */
 
             var form = request.Form;
-            //var rid = request.Form["ReservationId"][0];
-            //vm.ReservationId = new Guid(rid);
+            var rid = request.Form["ReservationId"][0];
+            vm.ReservationId = new Guid(rid);
 
             var reservationDetails = MapFormToReservationDetails(form);
 

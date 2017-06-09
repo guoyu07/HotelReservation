@@ -53,6 +53,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Payments.Service.Component"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MessageConventions", "MessageConventions\MessageConventions.csproj", "{537B7942-D577-41AF-BF4C-823EB983F570}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomerRegistry.Data", "CustomerRegistry.Data\CustomerRegistry.Data.csproj", "{A840298B-0962-43E3-92A3-F55453D26EE5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -139,6 +141,10 @@ Global
 		{537B7942-D577-41AF-BF4C-823EB983F570}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{537B7942-D577-41AF-BF4C-823EB983F570}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{537B7942-D577-41AF-BF4C-823EB983F570}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A840298B-0962-43E3-92A3-F55453D26EE5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A840298B-0962-43E3-92A3-F55453D26EE5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A840298B-0962-43E3-92A3-F55453D26EE5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A840298B-0962-43E3-92A3-F55453D26EE5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -163,5 +169,6 @@ Global
 		{C0102DC5-E065-4ECD-B627-0B40F4EDC9FE} = {7384DBE3-9DA1-48FD-81F6-18A5319BC97B}
 		{9D055C3E-1D05-4F50-99C8-783D0D83F8BE} = {10FB8E8F-35B6-4E0F-A0B8-D355195A56EE}
 		{537B7942-D577-41AF-BF4C-823EB983F570} = {B3092CD1-B528-4C16-89DA-42B3DAA6820F}
+		{A840298B-0962-43E3-92A3-F55453D26EE5} = {7384DBE3-9DA1-48FD-81F6-18A5319BC97B}
 	EndGlobalSection
 EndGlobal
