@@ -78,7 +78,7 @@ namespace Payments.API.Host
                 destination: "Payments.Service.Component");
 
             endpointConfiguration.HeartbeatPlugin(
-                serviceControlQueue: "ServiceControl",
+                serviceControlQueue: "particular.servicecontrol",
                 frequency: TimeSpan.FromSeconds(30),
                 timeToLive: TimeSpan.FromMinutes(3));
 

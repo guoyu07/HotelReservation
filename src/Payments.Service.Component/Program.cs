@@ -35,7 +35,7 @@ namespace Payments.Service.Component
             endpointConfiguration.UseTransport<MsmqTransport>();
 
             endpointConfiguration.HeartbeatPlugin(
-                serviceControlQueue: "ServiceControl",
+                serviceControlQueue: "particular.servicecontrol",
                 frequency: TimeSpan.FromSeconds(30),
                 timeToLive: TimeSpan.FromMinutes(3));
 

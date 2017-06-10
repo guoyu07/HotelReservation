@@ -74,7 +74,7 @@ namespace Reservations.API.Host
             var transportExtensions = endpointConfiguration.UseTransport<MsmqTransport>();
 
             endpointConfiguration.HeartbeatPlugin(
-                serviceControlQueue: "ServiceControl",
+                serviceControlQueue: "particular.servicecontrol",
                 frequency: TimeSpan.FromSeconds(30),
                 timeToLive: TimeSpan.FromMinutes(3));
 
