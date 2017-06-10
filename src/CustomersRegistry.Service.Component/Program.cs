@@ -3,6 +3,7 @@
     using System;
     using System.Data.SqlClient;
     using System.Threading.Tasks;
+    using Messages.Events;
     using NServiceBus;
     using NServiceBus.Persistence.Sql;
 
@@ -30,7 +31,12 @@
                     return new SqlConnection(connection);
                 });
 
-            endpointConfiguration.UseTransport<MsmqTransport>();
+            var transportExtensions = endpointConfiguration.UseTransport<MsmqTransport>();
+            var routing = transportExtensions.Routing();
+            routing.RegisterPublisher(
+                assembly: typeof(NewReservationCompleted).Assembly,
+                publisherEndpoint: "Reservations.Service.NewReservationDetailsComponent");
+
             endpointConfiguration.HeartbeatPlugin(
                 serviceControlQueue: "particular.servicecontrol",
                 frequency: TimeSpan.FromSeconds(30),
