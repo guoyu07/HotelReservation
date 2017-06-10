@@ -14,6 +14,7 @@ using System.Web.Http.Batch;
 namespace Reservations.API.Host
 {
     using Messages.Commands;
+    using NServiceBus.Features;
 
     public class Startup
     {
@@ -70,12 +71,21 @@ namespace Reservations.API.Host
             endpointConfiguration.UseSerialization<NServiceBus.JsonSerializer>();
             endpointConfiguration.UseContainer<WindsorBuilder>(c => c.ExistingContainer(container));
 
-            var transportExtensions = endpointConfiguration.UseTransport<LearningTransport>();
+            var transportExtensions = endpointConfiguration.UseTransport<MsmqTransport>();
+
+            endpointConfiguration.HeartbeatPlugin(
+                serviceControlQueue: "ServiceControl",
+                frequency: TimeSpan.FromSeconds(30),
+                timeToLive: TimeSpan.FromMinutes(3));
+
             var routing = transportExtensions.Routing();
             routing.RouteToEndpoint(
                 messageType: typeof(SaveNewReservationDetails),
                 destination: "Reservations.Service.NewReservationDetailsComponent");
 
+            endpointConfiguration.SendFailedMessagesTo("error");
+            endpointConfiguration.DisableFeature<TimeoutManager>();
+            endpointConfiguration.DisableFeature<MessageDrivenSubscriptions>();
 
             var endpointInstance = Endpoint.Start(endpointConfiguration)
                 .ConfigureAwait(false)

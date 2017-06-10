@@ -15,6 +15,7 @@ using System.Web.Http.Batch;
 namespace CustomersRegistry.API.Host
 {
     using Messages.Commands;
+    using NServiceBus.Features;
 
     public class Startup
     {
@@ -71,11 +72,20 @@ namespace CustomersRegistry.API.Host
             endpointConfiguration.UseSerialization<NServiceBus.JsonSerializer>();
             endpointConfiguration.UseContainer<WindsorBuilder>(c => c.ExistingContainer(container));
 
-            var transportExtensions = endpointConfiguration.UseTransport<LearningTransport>();
+            var transportExtensions = endpointConfiguration.UseTransport<MsmqTransport>();
             var routing = transportExtensions.Routing();
             routing.RouteToEndpoint(
                 messageType: typeof(SaveNewReservationCustomerDetails),
                 destination: "CustomersRegistry.Service.Component");
+
+            endpointConfiguration.HeartbeatPlugin(
+                serviceControlQueue: "particular.servicecontrol",
+                frequency: TimeSpan.FromSeconds(30),
+                timeToLive: TimeSpan.FromMinutes(3));
+
+            endpointConfiguration.DisableFeature<TimeoutManager>();
+            endpointConfiguration.DisableFeature<MessageDrivenSubscriptions>();
+            endpointConfiguration.SendFailedMessagesTo("error");
 
             var endpointInstance = Endpoint.Start(endpointConfiguration)
                 .ConfigureAwait(false)

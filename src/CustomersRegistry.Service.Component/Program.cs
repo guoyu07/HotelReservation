@@ -1,8 +1,10 @@
 ﻿namespace CustomersRegistry.ServiceComponent
 {
     using System;
+    using System.Data.SqlClient;
     using System.Threading.Tasks;
     using NServiceBus;
+    using NServiceBus.Persistence.Sql;
 
     class Program
     {
@@ -17,8 +19,24 @@
 
             var endpointConfiguration = new EndpointConfiguration("CustomersRegistry.Service.Component");
             endpointConfiguration.UseSerialization<JsonSerializer>();
-            endpointConfiguration.UsePersistence<LearningPersistence>();
-            endpointConfiguration.UseTransport<LearningTransport>();
+            var persistence = endpointConfiguration.UsePersistence<SqlPersistence>();
+            var subscriptions = persistence.SubscriptionSettings();
+            subscriptions.CacheFor(TimeSpan.FromMinutes(1));
+            var connection = @"Data Source=.\SQLEXPRESS;Initial Catalog=HotelReservationsPersistence;Integrated Security=True";
+            persistence.SqlVariant(SqlVariant.MsSqlServer);
+            persistence.ConnectionBuilder(
+                connectionBuilder: () =>
+                {
+                    return new SqlConnection(connection);
+                });
+
+            endpointConfiguration.UseTransport<MsmqTransport>();
+            endpointConfiguration.HeartbeatPlugin(
+                serviceControlQueue: "particular.servicecontrol",
+                frequency: TimeSpan.FromSeconds(30),
+                timeToLive: TimeSpan.FromMinutes(3));
+            endpointConfiguration.SendFailedMessagesTo("error");
+            endpointConfiguration.EnableInstallers();
 
             var endpointInstance = await Endpoint.Start(endpointConfiguration)
                 .ConfigureAwait(false);

@@ -14,6 +14,7 @@ using System.Web.Http.Batch;
 namespace Payments.API.Host
 {
     using Messages.Commands;
+    using NServiceBus.Features;
 
     public class Startup
     {
@@ -70,11 +71,20 @@ namespace Payments.API.Host
             endpointConfiguration.UseSerialization<NServiceBus.JsonSerializer>();
             endpointConfiguration.UseContainer<WindsorBuilder>(c => c.ExistingContainer(container));
 
-            var transportExtensions = endpointConfiguration.UseTransport<LearningTransport>();
+            var transportExtensions = endpointConfiguration.UseTransport<MsmqTransport>();
             var routing = transportExtensions.Routing();
             routing.RouteToEndpoint(
                 messageType: typeof(SaveNewPaymentDetails),
                 destination: "Payments.Service.Component");
+
+            endpointConfiguration.HeartbeatPlugin(
+                serviceControlQueue: "ServiceControl",
+                frequency: TimeSpan.FromSeconds(30),
+                timeToLive: TimeSpan.FromMinutes(3));
+
+            endpointConfiguration.DisableFeature<TimeoutManager>();
+            endpointConfiguration.DisableFeature<MessageDrivenSubscriptions>();
+            endpointConfiguration.SendFailedMessagesTo("error");
 
             var endpointInstance = Endpoint.Start(endpointConfiguration)
                 .ConfigureAwait(false)

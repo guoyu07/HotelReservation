@@ -3,7 +3,9 @@ using System.Threading.Tasks;
 
 namespace Reservations.Service.NewReservationDetailsComponent
 {
+    using System.Data.SqlClient;
     using NServiceBus;
+    using NServiceBus.Persistence.Sql;
 
     class Program
     {
@@ -18,8 +20,30 @@ namespace Reservations.Service.NewReservationDetailsComponent
 
             var endpointConfiguration = new EndpointConfiguration("Reservations.Service.NewReservationDetailsComponent");
             endpointConfiguration.UseSerialization<JsonSerializer>();
-            endpointConfiguration.UsePersistence<LearningPersistence>();
-            endpointConfiguration.UseTransport<LearningTransport>();
+            var persistence = endpointConfiguration.UsePersistence<SqlPersistence>();
+            var subscriptions = persistence.SubscriptionSettings();
+            subscriptions.CacheFor(TimeSpan.FromMinutes(1));
+
+            var connection = @"Data Source=.\SQLEXPRESS;Initial Catalog=HotelReservationsPersistence;Integrated Security=True";
+            persistence.SqlVariant(SqlVariant.MsSqlServer);
+            persistence.ConnectionBuilder(
+                connectionBuilder: () =>
+                {
+                    return new SqlConnection(connection);
+                });
+
+            endpointConfiguration.UseTransport<MsmqTransport>();
+
+            endpointConfiguration.HeartbeatPlugin(
+                serviceControlQueue: "particular.servicecontrol",
+                frequency: TimeSpan.FromSeconds(30),
+                timeToLive: TimeSpan.FromMinutes(3));
+            endpointConfiguration.SagaPlugin(
+                serviceControlQueue: "particular.servicecontrol");
+
+            endpointConfiguration.SendFailedMessagesTo("error");
+
+            endpointConfiguration.EnableInstallers();
 
             var endpointInstance = await Endpoint.Start(endpointConfiguration)
                 .ConfigureAwait(false);

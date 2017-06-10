@@ -3,6 +3,7 @@
     public class SaveNewPaymentDetails
     {
         public string ReservationId { get; set; }
+        public string PaymentId { get; set; }
         public string CustomerId { get; set; }
         public string CardNumber { get; set; }
         public string ExpieryDateMonth { get; set; }
