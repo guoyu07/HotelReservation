@@ -1,0 +1,20 @@
+@{
+    ViewData["Title"] = "New reservation";
+}
+
+<h2>@ViewData["Title"]</h2>
+<form action="/reservation/new" method="post">
+    <input type="hidden" id="ReservationId" name="ReservationId" value="@Model.ReservationId">
+    <div>
+        @await Component.InvokeAsync("ReservationSummaryViewCustomerDetails", Model)
+    </div>
+    <div>
+        @await Component.InvokeAsync("ReservationSummaryViewPaymentDetails", Model)
+    </div>
+    <div>
+        @await Component.InvokeAsync("ReservationSummaryDetails", Model)
+    </div>
+    <div>
+        <input type="submit" value="Book Now!" />
+    </div>
+</form>
