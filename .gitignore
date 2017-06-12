@@ -5,6 +5,9 @@
 .lock.json
 project.lock.json
 
+# NServiceBus learningtransport root folder
+.learningtransport/
+
 # VS machine specific data
 .vs/
 
