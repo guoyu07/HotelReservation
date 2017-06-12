@@ -5,13 +5,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Views\Reservation\Components\ReservationSummaryDetails\Default.cshtml" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <EmbeddedResource Include="Views\Reservation\Components\ReservationSummaryViewDetails\Default.cshtml" />
-    <EmbeddedResource Include="Views\Reservation\SummayView.cshtml" />
-    <EmbeddedResource Include="Views\Reservation\Components\ReservationSummaryDetails\Default.cshtml" />
     <EmbeddedResource Include="Views\Reservation\New.cshtml" />
     <EmbeddedResource Include="Views\Reservation\Details.cshtml" />
   </ItemGroup>

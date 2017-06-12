@@ -8,7 +8,7 @@ namespace Payments.API.Host
     {
         static void Main(string[] args)
         {
-            var baseAddress = ConfigurationManager.AppSettings["baseAddress"] ?? "http://localhost:8182";
+            var baseAddress = ConfigurationManager.AppSettings["baseAddress"] ?? "http://localhost:8181";
 
             using (var webApp = WebApp.Start<Startup>(url: baseAddress))
             {
