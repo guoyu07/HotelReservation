@@ -1,0 +1,32 @@
+﻿<div>
+    <h4>Reservation details</h4>
+</div>
+<div>
+    <label for="HotelName">Hotel name:</label>
+    <input type="text" id="HotelName" name="HotelName" value="@Model.HotelName" />
+</div>
+<div>
+    <label for="CheckIn">Check In:</label>
+    <input type="text" id="CheckIn" name="CheckIn" value="@Model.CheckIn"/>
+</div>
+<div>
+    <label for="CheckOut">Check Out:</label>
+    <input type="text" id="CheckOut" name="CheckOut" value="@Model.CheckOut" />    
+</div>
+<div>
+    <label for="PayAtHotel">Pay On Arriavl:</label>
+    <input type="radio" itemprop="PaymentAt" id="PayAtHotel" name="PaymentAt" value="@Model.PayAtHotel"/>
+</div>
+<div>
+    <label for="PayNow">Pay Now:</label>
+    <input type="radio" itemprop="PaymentAt" id="PayNow" name="PaymentAt" value="@Model.PayNow"/>
+</div>
+<div>
+    <label for="CustomerComments">Customer Comments:</label>
+    <input type="text" size="50" id="CustomerComments" name="CustomerComments" value="@Model.CustomerComments"/>
+</div>
+
+@*<input type="hidden" id="CustomerId" name="CustomerId" value="@Model.CustomerId" />
+<input type="hidden" id="ReservationId" name="ReservationId" value="@Model.ReservationId" />*@
+<input type="hidden" id="HotelId" name="HotelId" value="@Model.HotelId" />
+@*<input type="hidden" id="PaymentId" name="PaymentId" value="@Model.PaymentId" />*@

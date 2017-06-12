@@ -5,9 +5,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Views\**" />
-    <EmbeddedResource Remove="Views\**" />
-    <None Remove="Views\**" />
+    <None Remove="Views\Reservation\Components\ReservationSummaryPaymentDetails\Default.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Views\Reservation\Components\ReservationSummaryViewPaymentDetails\Default.cshtml" />
+    <EmbeddedResource Include="Views\Reservation\Components\ReservationSummaryPaymentDetails\Default.cshtml" />
   </ItemGroup>
 
   <ItemGroup>

@@ -14,6 +14,7 @@ namespace Reservations.ViewComponents
         [HttpPost]
         public IActionResult New(IFormCollection form)
         {
+            // create a new reservation?
             return View();
         }
 
