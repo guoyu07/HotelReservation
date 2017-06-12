@@ -1,4 +1,4 @@
-﻿namespace Reservations.ViewModelComposition
+namespace Reservations.ViewModelComposition
 {
     using System;
     using System.Net;
@@ -9,9 +9,10 @@
     using ITOps.ViewModelComposition;
     using Microsoft.AspNetCore.Http;
     using Microsoft.AspNetCore.Routing;
+    using Model;
     using Newtonsoft.Json;
 
-    class NewReservationSubmissionDetailsHandler : IHandleRequests
+    class NewReservationPostHandler : IHandleRequests
     {
         public bool Matches(RouteData routeData, string httpVerb, HttpRequest request)
         {
@@ -20,8 +21,8 @@
             var action = (string)routeData.Values["action"];
 
             return HttpMethods.IsPost(httpVerb)
-                && controller.ToLowerInvariant() == "reservation"
-                && action.ToLowerInvariant() == "new";
+                   && controller.ToLowerInvariant() == "reservation"
+                   && action.ToLowerInvariant() == "new";
         }
 
         public Task HandleAsync(dynamic vm, RouteData routeData, HttpRequest request)
@@ -89,19 +90,5 @@
                 CustomerComments = form["CustomerComments"],
             };
         }
-    }
-
-    internal class ReservationDetailsModel
-    {
-        public string ReservationId { get; set;}
-        public string CustomerId { get; set; } 
-        public string HotelId { get; set; } 
-        public string CheckIn { get; set; } 
-        public string CheckOut { get; set; } 
-        public string PayAtHotel { get; set; } 
-        public string PaymentId { get; set; } 
-        public string CustomerComments { get; set; }
-        public string PayNow { get; set; }
-        public string HotelName { get; set; }
     }
 }

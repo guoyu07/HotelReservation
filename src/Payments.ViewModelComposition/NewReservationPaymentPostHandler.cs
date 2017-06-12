@@ -10,10 +10,11 @@ namespace Payments.ViewModelComposition
     using System.Net.Http;
     using System.Net.Http.Headers;
     using System.Text;
+    using Model;
     using Newtonsoft.Json;
 
     // rename this to NewPaymentSubmissionDetailsHandler??
-    class NewReservationSubmissionDetailsHandler : IHandleRequests
+    partial class NewReservationPaymentPostHandler : IHandleRequests
     {
         public bool Matches(RouteData routeData, string httpVerb, HttpRequest request)
         {
@@ -39,9 +40,9 @@ namespace Payments.ViewModelComposition
              * the payment process
              */
 
-            var PaymentDetails = MapFormToPaymentDetailsModel(form);
+            var paymentDetails = ReservationPaymentDetailsModelMapper.MapFormToPaymentDetailsModel(form);
 
-            PostReservationDetails(PaymentDetails).Wait();
+            PostReservationDetails(paymentDetails).Wait();
             return Task.CompletedTask;
         }
 
@@ -75,33 +76,6 @@ namespace Payments.ViewModelComposition
             httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
             return await httpClient.PostAsync(url, content);
-        }
-
-        private ReservationPaymentDetailsModel MapFormToPaymentDetailsModel(IFormCollection form)
-        {
-            return new ReservationPaymentDetailsModel
-            {
-                ReservationId = form["ReservationId"],
-                
-                CardNumber = form["CardNumber"],
-                ExpieryDateMonth = form["ExpieryDateMonth"],
-                ExpieryDateYear = form["ExpieryDateYear"],
-                CCV = form["CCV"],
-                PaymentAmount = form["PaymentAmount"],
-
-                CustomerId = form["CustomerId"],
-            };
-        }
-
-        internal class ReservationPaymentDetailsModel
-        {
-            public string ReservationId { get; set; }
-            public string CustomerId { get; set; }
-            public string CardNumber { get; set; }
-            public string ExpieryDateMonth { get; set; }
-            public string ExpieryDateYear { get; set; }
-            public string CCV { get; set; }
-            public string PaymentAmount { get; set; }
         }
     }
 }

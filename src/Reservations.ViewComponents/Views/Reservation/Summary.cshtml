@@ -6,15 +6,15 @@
 <form action="/reservation/new" method="post">
     <input type="hidden" id="ReservationId" name="ReservationId" value="@Model.ReservationId">
     <div>
-        @await Component.InvokeAsync("ReservationSummaryViewCustomerDetails", Model)
+        @await Component.InvokeAsync("ReservationCustomerSummary", Model)
     </div>
     <div>
-        @await Component.InvokeAsync("ReservationSummaryViewPaymentDetails", Model)
+        @await Component.InvokeAsync("ReservationPaymentSummary", Model)
     </div>
     <div>
-        @await Component.InvokeAsync("ReservationSummaryDetails", Model)
+        @await Component.InvokeAsync("ReservationSummary", Model)
     </div>
     <div>
-        <input type="submit" value="Book Now!" />
+        <input type="submit" value="Cancel Reservation" />
     </div>
 </form>

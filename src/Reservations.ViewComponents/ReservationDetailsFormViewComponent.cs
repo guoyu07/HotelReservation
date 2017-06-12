@@ -2,7 +2,7 @@
 
 namespace Reservations.ViewComponents
 {
-    public class ReservationSummaryViewDetailsViewComponent : ViewComponent
+    public class ReservationDetailsFormViewComponent : ViewComponent
     {
         public IViewComponentResult Invoke(dynamic model)
         {

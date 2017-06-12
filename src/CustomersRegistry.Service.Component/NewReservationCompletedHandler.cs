@@ -11,6 +11,8 @@
         {
             Console.WriteLine("Procesing NewReservationCompleted for \r\n ReservationId: {0},  \r\n Sending a confermtion email to the user...", message.ReservationId );
 
+           // sendf a welcome email
+
             return Task.FromResult(0);
         }
     }

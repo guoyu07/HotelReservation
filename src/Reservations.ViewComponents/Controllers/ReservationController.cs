@@ -18,7 +18,7 @@ namespace Reservations.ViewComponents
             return View();
         }
 
-        public IActionResult Details(Guid rid)
+        public IActionResult Summary(Guid rid)
         {
             return View();
         }

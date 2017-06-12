@@ -9,9 +9,10 @@
     using System.Net.Http.Headers;
     using System.Text;
     using System.Threading.Tasks;
+    using Model;
     using Newtonsoft.Json;
 
-    class NewReservationSubmissionCustomerDetailsHandler : IHandleRequests
+    class NewReservationCustomerPostHandler : IHandleRequests
     {
         public bool Matches(RouteData routeData, string httpVerb, HttpRequest request)
         {
@@ -39,9 +40,9 @@
             return Task.CompletedTask;
         }
 
-        private CustomersRegistryDetails MapFormToCustomerDetails(IFormCollection form)
+        private CustomersRegistryDetailsModel MapFormToCustomerDetails(IFormCollection form)
         {
-            return new CustomersRegistryDetails
+            return new CustomersRegistryDetailsModel
             {
                 CustomerFirstName = form["CustomerFirstName"],
                 CustomerLastName = form["CustomerLastName"],
@@ -54,7 +55,7 @@
             };
         }
 
-        private async Task PostCustomerDetails(CustomersRegistryDetails customerDetails)
+        private async Task PostCustomerDetails(CustomersRegistryDetailsModel customerDetails)
         {
             HttpContent jasonHttpContent = new StringContent(JsonConvert.SerializeObject(customerDetails),
                 Encoding.UTF8, "application/json");

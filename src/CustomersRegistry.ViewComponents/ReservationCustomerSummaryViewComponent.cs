@@ -1,8 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using System.Threading.Tasks;
 
-namespace Payments.ViewComponents
+namespace CustomersRegistry.ViewComponents
 {
-    public class ReservationSummaryPaymentDetailsViewComponent : ViewComponent
+    public class ReservationCustomerSummaryViewComponent : ViewComponent
     {
         public IViewComponentResult Invoke(dynamic model)
         {

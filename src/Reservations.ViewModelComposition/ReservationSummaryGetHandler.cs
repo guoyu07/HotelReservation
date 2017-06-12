@@ -7,9 +7,10 @@
     using ITOps.ViewModelComposition;
     using Microsoft.AspNetCore.Http;
     using Microsoft.AspNetCore.Routing;
+    using Model;
     using Newtonsoft.Json;
 
-    class ReservationDetailsHandler : IHandleRequests
+    class ReservationSummaryGetHandler : IHandleRequests
     {
         public bool Matches(RouteData routeData, string httpVerb, HttpRequest request)
         {
@@ -19,7 +20,7 @@
 
             return HttpMethods.IsGet(httpVerb)
                 && controller.ToLowerInvariant() == "reservation"
-                && action.ToLowerInvariant() == "details";
+                && action.ToLowerInvariant() == "summary";
         }
 
         public async Task HandleAsync(dynamic vm, RouteData routeData, HttpRequest request)
@@ -31,12 +32,14 @@
              */
             var reservationDetails = await GetReservationDetailsAsync(reservationId);
 
-            MapCustomerDetailsToDynamic(vm, reservationDetails,reservationId);
+            vm.ReservationId = reservationId;
+
+            MapCustomerDetailsToDynamic(vm, reservationDetails);
         }
 
-        private static void MapCustomerDetailsToDynamic(dynamic vm, ReservationDetailsModel reservationDetails, string reservationId)
+        public static void MapCustomerDetailsToDynamic(dynamic vm, ReservationDetailsModel reservationDetails)
         {
-            vm.ReservationId = reservationId;
+            vm.ReservationId = reservationDetails.ReservationId;
             vm.CustomerId = reservationDetails.CustomerId;
             vm.HotelId = reservationDetails.HotelId;
             vm.CheckIn = reservationDetails.CheckIn;
@@ -63,7 +66,7 @@
             httpClient.DefaultRequestHeaders.Accept.Clear();
             httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
-            return await httpClient.GetAsync(url);
+            return await httpClient.GetAsync(string.Format(url + "/reservationId={0}", reservationId));
         }
     }
 }

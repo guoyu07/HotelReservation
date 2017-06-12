@@ -8,7 +8,7 @@ namespace Reservations.ViewModelComposition
 {
     using System.Runtime.InteropServices;
 
-    class NewReservationDetailsHandler : IHandleRequests
+    class NewReservationGetHandler : IHandleRequests
     {
         public bool Matches(RouteData routeData, string httpVerb, HttpRequest request)
         {

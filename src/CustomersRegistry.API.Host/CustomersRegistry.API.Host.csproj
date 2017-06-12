@@ -93,9 +93,9 @@
       <Project>{537b7942-d577-41af-bf4c-823eb983f570}</Project>
       <Name>MessageConventions</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Messages\Messages.csproj">
+    <ProjectReference Include="..\Messages\Reservation.Messages.csproj">
       <Project>{C0BCCFBE-57F7-4D47-8743-576AD04CF7DA}</Project>
-      <Name>Messages</Name>
+      <Name>Reservation.Messages</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

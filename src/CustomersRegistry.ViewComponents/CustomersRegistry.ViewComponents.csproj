@@ -5,11 +5,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Views\Reservation\Components\ReservationSummaryCustomerDetails\Default.cshtml" />
+    <None Remove="Views\Reservation\Components\ReservationCustomerForm\Default.cshtml" />
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Include="Views\Reservation\Components\ReservationSummaryCustomerDetails\Default.cshtml" />
+    <EmbeddedResource Include="Views\Reservation\Components\ReservationCustomerSummary\Default.cshtml" />
+    <EmbeddedResource Include="Views\Reservation\Components\ReservationCustomerForm\Default.cshtml" />
   </ItemGroup>
 
   <ItemGroup>

@@ -7,7 +7,7 @@ namespace Payments.ViewModelComposition
 {
     using System;
 
-    class NewReservationDetailsHandler : IHandleRequests
+    class NewReservationPaymentGetHandler : IHandleRequests
     {
         public bool Matches(RouteData routeData, string httpVerb, HttpRequest request)
         {
