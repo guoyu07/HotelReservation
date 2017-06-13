@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 namespace Reservations.Service.NewReservationDetailsComponent
 {
     using System.Data.SqlClient;
+    using Messages.Events;
     using NServiceBus;
     using NServiceBus.Persistence.Sql;
 
@@ -31,18 +32,20 @@ namespace Reservations.Service.NewReservationDetailsComponent
                 {
                     return new SqlConnection(connection);
                 });
-
-            endpointConfiguration.UseTransport<MsmqTransport>();
-
+            
+            var transportExtensions = endpointConfiguration.UseTransport<MsmqTransport>();
+            var routing = transportExtensions.Routing();
+            routing.RegisterPublisher(
+                eventType: typeof(ReservationPaymentComplete),
+                publisherEndpoint: "Payments.Service.Component");
             endpointConfiguration.HeartbeatPlugin(
                 serviceControlQueue: "particular.servicecontrol",
                 frequency: TimeSpan.FromSeconds(30),
                 timeToLive: TimeSpan.FromMinutes(3));
             endpointConfiguration.SagaPlugin(
                 serviceControlQueue: "particular.servicecontrol");
-
             endpointConfiguration.SendFailedMessagesTo("error");
-
+            endpointConfiguration.AuditProcessedMessagesTo("audit");
             endpointConfiguration.EnableInstallers();
 
             var endpointInstance = await Endpoint.Start(endpointConfiguration)

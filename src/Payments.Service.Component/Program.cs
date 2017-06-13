@@ -38,9 +38,8 @@ namespace Payments.Service.Component
                 serviceControlQueue: "particular.servicecontrol",
                 frequency: TimeSpan.FromSeconds(30),
                 timeToLive: TimeSpan.FromMinutes(3));
-
             endpointConfiguration.SendFailedMessagesTo("error");
-
+            endpointConfiguration.AuditProcessedMessagesTo("audit");
             endpointConfiguration.EnableInstallers();
 
             var endpointInstance = await Endpoint.Start(endpointConfiguration)

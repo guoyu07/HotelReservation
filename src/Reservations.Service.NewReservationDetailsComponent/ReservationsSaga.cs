@@ -13,7 +13,7 @@
     public class ReservationsSaga : SqlSaga<ReservationsSagaData>,
         IAmStartedByMessages<SaveNewReservationDetails>,
         IHandleMessages<CancelReservationByUser>,
-        IHandleMessages<ReservationPaymentComplete>
+        IAmStartedByMessages<ReservationPaymentComplete>
 
     {
         protected override string CorrelationPropertyName => nameof(ReservationsSagaData.ReservationId);
@@ -27,11 +27,31 @@
             Data.CustomerComments = message.CustomerComments;
             Data.HotelId = message.HotelId;
             Data.PayAtHotel = message.PayAtHotel;
+            Data.ReservationSaved = true;
 
 
             Console.WriteLine("Procesing SaveNewReservationDetails for \r\n ReservationId: {0} \r\n HotelId: {1} \r\n CheckIn: {2} \r\n CustomerId: {3}", message.ReservationId, message.HotelId, message.CheckIn, message.CustomerId);
 
+            CheckIfSagaIsComplete(context);
+
             return Task.FromResult(0);
+        }
+
+        private void CheckIfSagaIsComplete(IMessageHandlerContext context)
+        {
+            if (Data.PaymentComplete && Data.ReservationSaved)
+            {
+                Data.SagaCompleted = true;
+
+                Console.WriteLine("Saga Completed for \r\n ReservationId: {0}", Data.ReservationId);
+
+                context.Publish<NewReservationCompleted>(
+                    m =>
+                    {
+                        m.ReservationId = Data.ReservationId;
+                        m.CustomerId = Data.CustomerId;
+                    });
+            }
         }
 
         public Task Handle(CancelReservationByUser message, IMessageHandlerContext context)
@@ -40,6 +60,8 @@
 
             Console.WriteLine("Procesing CancelReservationByUser for \r\n ReservationId: {0}", message.ReservationId);
 
+            // kick off a cancelation process 
+
             return Task.FromResult(0);
         }
 
@@ -47,8 +69,11 @@
         {
             Data.PaymentId = message.PaymentId;
             Data.PaymentAmount = message.PaymentAmount;
+            Data.PaymentComplete = true;
 
             Console.WriteLine("Procesing ReservationPaymentComplete for \r\n ReservationId: {0} \r\n PaymentId: {1} \r\n PaymentAmount: {2}", message.ReservationId, message.PaymentId, message.PaymentAmount);
+
+            CheckIfSagaIsComplete(context);
 
             return Task.FromResult(0);
         }

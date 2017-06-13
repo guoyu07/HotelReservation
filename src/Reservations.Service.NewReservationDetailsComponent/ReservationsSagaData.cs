@@ -15,6 +15,9 @@
         public string CustomerComments { get; set; }
         public string ReservationDate { get; set; }
         public string ReservationCancelationDate { get; set; }
+        public bool PaymentComplete { get; set; }
+        public bool ReservationSaved { get; set; }
+        public bool SagaCompleted { get; set; }
 
         // ... and more
     }
