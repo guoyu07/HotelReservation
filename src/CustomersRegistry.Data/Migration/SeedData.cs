@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace CustomerRegistry.Data.Migration
+namespace CustomersRegistry.Data.Migration
 {
     using System;
     using Models;

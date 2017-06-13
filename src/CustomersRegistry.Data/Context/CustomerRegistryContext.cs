@@ -1,4 +1,4 @@
-﻿namespace CustomerRegistry.Data.Context
+﻿namespace CustomersRegistry.Data.Context
 {
     using System.Data.Entity;
     using Migration;

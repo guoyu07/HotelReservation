@@ -1,4 +1,4 @@
-﻿namespace CustomerRegistry.Data.Migration
+﻿namespace CustomersRegistry.Data.Migration
 {
     using System.Data.Entity;
     using System.Data.Entity.Migrations;

@@ -43,7 +43,6 @@
     <Compile Include="Commands\CancelReservationByUser.cs" />
     <Compile Include="Commands\SaveNewPaymentDetails.cs" />
     <Compile Include="Commands\SaveNewReservationDetails.cs" />
-    <Compile Include="Commands\SaveNewReservationCustomerDetails.cs" />
     <Compile Include="Events\NewReservationCompleted.cs" />
     <Compile Include="Events\ReservationPaymentComplete.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

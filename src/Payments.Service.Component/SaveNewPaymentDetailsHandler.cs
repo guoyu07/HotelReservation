@@ -1,4 +1,4 @@
-﻿namespace Reservations.Service.NewReservationDetailsComponent
+﻿namespace Payments.Service.Component
 {
     using NServiceBus;
     using Reservations.Messages.Commands;

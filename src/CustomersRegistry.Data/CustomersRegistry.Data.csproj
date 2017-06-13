@@ -4,16 +4,15 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{C0102DC5-E065-4ECD-B627-0B40F4EDC9FE}</ProjectGuid>
-    <OutputType>Exe</OutputType>
-    <RootNamespace>CustomersRegistry.Service.Component</RootNamespace>
-    <AssemblyName>CustomersRegistry.Service.Component</AssemblyName>
+    <ProjectGuid>{A840298B-0962-43E3-92A3-F55453D26EE5}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CustomersRegistry.Data</RootNamespace>
+    <AssemblyName>CustomersRegistry.Data</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -23,7 +22,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -42,44 +40,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="NewReservationCompletedHandler.cs" />
-    <Compile Include="SaveNewReservationCustomerDetailsHandler.cs" />
-    <Compile Include="Program.cs" />
+    <Compile Include="Context\CustomerRegistryContext.cs" />
+    <Compile Include="Migration\DatabaseInitializer.cs" />
+    <Compile Include="Migration\SeedData.cs" />
+    <Compile Include="Models\ReservationCustomerDetails.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="EntityFramework">
+      <Version>6.1.3</Version>
+    </PackageReference>
+  </ItemGroup>
+  <ItemGroup>
     <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <PackageReference Include="NServiceBus">
-      <Version>6.3.4</Version>
-    </PackageReference>
-    <PackageReference Include="NServiceBus.Persistence.Sql">
-      <Version>2.1.1</Version>
-    </PackageReference>
-    <PackageReference Include="NServiceBus.Persistence.Sql.MsBuild">
-      <Version>2.1.1</Version>
-    </PackageReference>
-    <PackageReference Include="NServiceBus.Persistence.Sql.ScriptBuilder">
-      <Version>2.1.1</Version>
-    </PackageReference>
-    <PackageReference Include="ServiceControl.Plugin.Nsb6.Heartbeat">
-      <Version>3.0.1</Version>
-    </PackageReference>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\CustomersRegistry.Messages.Commands\CustomersRegistry.Messages.Commands.csproj">
-      <Project>{a59a67f8-9b5f-4ac1-89f7-50a714c29bb0}</Project>
-      <Name>CustomersRegistry.Messages.Commands</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\MessageConventions\MessageConventions.csproj">
-      <Project>{537b7942-d577-41af-bf4c-823eb983f570}</Project>
-      <Name>MessageConventions</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Reservations.Messages\Reservations.Messages.csproj">
-      <Project>{c0bccfbe-57f7-4d47-8743-576ad04cf7da}</Project>
-      <Name>Reservations.Messages</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

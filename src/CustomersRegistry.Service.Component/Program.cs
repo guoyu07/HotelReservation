@@ -1,4 +1,4 @@
-﻿namespace CustomersRegistry.ServiceComponent
+﻿namespace CustomersRegistry.Service.Component
 {
     using NServiceBus;
     using NServiceBus.Persistence.Sql;

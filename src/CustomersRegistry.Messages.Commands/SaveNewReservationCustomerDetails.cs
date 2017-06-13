@@ -1,9 +1,6 @@
-﻿namespace CustomerRegistry.Data.Models
+﻿namespace CustomersRegistry.Messages.Commands
 {
-    using System;
-    using System.ComponentModel.DataAnnotations;
-
-    public class ReservationCustomerDetails
+    public class SaveNewReservationCustomerDetails
     {
         public string CustomerFirstName { get; set; }
         public string CustomerLastName { get; set; }
@@ -12,7 +9,6 @@
         public string CustomerZipCode { get; set; }
         public string CustomerPhoneNumber { get; set; }
         public string ReservationId { get; set; }
-        [Key]
-        public Guid CustomerId { get; set; }
+        public string CustomerId { get; set; }
     }
 }
