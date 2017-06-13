@@ -41,7 +41,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Payments.ViewComponents", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Reservations.ViewModelComposition", "Reservations.ViewModelComposition\Reservations.ViewModelComposition.csproj", "{42B98717-D9F1-4E3C-9472-CE79FBF99824}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Messages", "Messages", "{B3092CD1-B528-4C16-89DA-42B3DAA6820F}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared Conventions", "Shared Conventions", "{B3092CD1-B528-4C16-89DA-42B3DAA6820F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Reservations.Messages.Events", "Reservations.Messages\Reservations.Messages.Events.csproj", "{C0BCCFBE-57F7-4D47-8743-576AD04CF7DA}"
 EndProject
