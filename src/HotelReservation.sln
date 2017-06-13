@@ -61,6 +61,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Payments.Messages.Commands"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Reservations.Messages.Commands", "Reservations.Messages.Commands\Reservations.Messages.Commands.csproj", "{13338777-CCBE-4FA1-A169-DA0E157CD1C8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HotelReservation.ServiceControlAdapter", "HotelReservation.ServiceControlAdapter\HotelReservation.ServiceControlAdapter.csproj", "{275E6F47-AA2A-4D3A-B8BA-2987724207C1}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{3138D64E-9699-47C1-BA87-8ECF97A6C7C6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -163,6 +167,10 @@ Global
 		{13338777-CCBE-4FA1-A169-DA0E157CD1C8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{13338777-CCBE-4FA1-A169-DA0E157CD1C8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{13338777-CCBE-4FA1-A169-DA0E157CD1C8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{275E6F47-AA2A-4D3A-B8BA-2987724207C1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{275E6F47-AA2A-4D3A-B8BA-2987724207C1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{275E6F47-AA2A-4D3A-B8BA-2987724207C1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{275E6F47-AA2A-4D3A-B8BA-2987724207C1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -191,5 +199,6 @@ Global
 		{A59A67F8-9B5F-4AC1-89F7-50A714C29BB0} = {7384DBE3-9DA1-48FD-81F6-18A5319BC97B}
 		{82CBE85C-7C01-4584-8D7C-2AC16A918973} = {10FB8E8F-35B6-4E0F-A0B8-D355195A56EE}
 		{13338777-CCBE-4FA1-A169-DA0E157CD1C8} = {8751E1C0-4AA8-497F-857B-EF5BEB2CE88B}
+		{275E6F47-AA2A-4D3A-B8BA-2987724207C1} = {3138D64E-9699-47C1-BA87-8ECF97A6C7C6}
 	EndGlobalSection
 EndGlobal
