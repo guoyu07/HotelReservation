@@ -14,7 +14,7 @@ using System.Web.Http.Batch;
 namespace Payments.API.Host
 {
     using NServiceBus.Features;
-    using Reservations.Messages.Commands;
+    using Payments.Messages.Commands;
 
     public class Startup
     {

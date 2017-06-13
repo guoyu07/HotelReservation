@@ -1,4 +1,4 @@
-﻿namespace Reservations.Messages.Commands
+﻿namespace Payments.Messages.Commands
 {
     public class SaveNewPaymentDetails
     {

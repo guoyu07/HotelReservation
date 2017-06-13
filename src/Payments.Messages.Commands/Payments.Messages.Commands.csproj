@@ -4,14 +4,13 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{C0BCCFBE-57F7-4D47-8743-576AD04CF7DA}</ProjectGuid>
+    <ProjectGuid>{82CBE85C-7C01-4584-8D7C-2AC16A918973}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Messages</RootNamespace>
-    <AssemblyName>Messages</AssemblyName>
+    <RootNamespace>Payments.Messages.Commands</RootNamespace>
+    <AssemblyName>Payments.Messages.Commands</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -41,12 +40,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Commands\CancelReservationByUser.cs" />
-    <Compile Include="Commands\SaveNewReservationDetails.cs" />
-    <Compile Include="Events\NewReservationCompleted.cs" />
-    <Compile Include="Events\ReservationPaymentComplete.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SaveNewPaymentDetails.cs" />
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
