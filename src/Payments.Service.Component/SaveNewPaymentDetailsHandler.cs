@@ -1,9 +1,9 @@
 ﻿namespace Reservations.Service.NewReservationDetailsComponent
 {
+    using NServiceBus;
+    using Reservations.Messages.Commands;
     using System;
     using System.Threading.Tasks;
-    using Messages.Commands;
-    using NServiceBus;
 
     class SaveNewPaymentDetailsHandler : IHandleMessages<SaveNewPaymentDetails>
     {

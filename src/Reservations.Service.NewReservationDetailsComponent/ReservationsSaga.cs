@@ -1,11 +1,11 @@
 ﻿namespace Reservations.Service.NewReservationDetailsComponent
 {
-    using System;
-    using System.Threading.Tasks;
-    using Messages.Commands;
-    using Messages.Events;
     using NServiceBus;
     using NServiceBus.Persistence.Sql;
+    using Reservations.Messages.Commands;
+    using Reservations.Messages.Events;
+    using System;
+    using System.Threading.Tasks;
 
     /// TODO: make that a saga and add a cancel reservation feature that publishes an event 
     /// and retract the reservation

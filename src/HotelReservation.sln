@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26403.7
+VisualStudioVersion = 15.0.26430.6
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ITOps", "ITOps", "{9C624413-311A-4BC3-8B7D-C0BD80654813}"
 EndProject
@@ -43,7 +43,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Reservations.ViewModelCompo
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Messages", "Messages", "{B3092CD1-B528-4C16-89DA-42B3DAA6820F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Reservation.Messages", "Messages\Reservation.Messages.csproj", "{C0BCCFBE-57F7-4D47-8743-576AD04CF7DA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Reservations.Messages", "Reservations.Messages\Reservations.Messages.csproj", "{C0BCCFBE-57F7-4D47-8743-576AD04CF7DA}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Reservations.Service.NewReservationDetailsComponent", "Reservations.Service.NewReservationDetailsComponent\Reservations.Service.NewReservationDetailsComponent.csproj", "{FD4A2D5D-2B51-4225-83CB-99CBD03F291E}"
 EndProject

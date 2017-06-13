@@ -1,11 +1,11 @@
 ﻿namespace CustomersRegistry.ServiceComponent
 {
+    using NServiceBus;
+    using NServiceBus.Persistence.Sql;
+    using Reservations.Messages.Events;
     using System;
     using System.Data.SqlClient;
     using System.Threading.Tasks;
-    using Messages.Events;
-    using NServiceBus;
-    using NServiceBus.Persistence.Sql;
 
     class Program
     {

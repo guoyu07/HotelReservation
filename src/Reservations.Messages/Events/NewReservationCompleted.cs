@@ -1,4 +1,4 @@
-﻿namespace Messages.Events
+﻿namespace Reservations.Messages.Events
 {
     public class NewReservationCompleted
     {

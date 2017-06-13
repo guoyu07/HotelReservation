@@ -1,9 +1,9 @@
 ﻿using System;
 namespace CustomersRegistry.ServiceComponent
 {
-    using System.Threading.Tasks;
-    using Messages.Commands;
     using NServiceBus;
+    using Reservations.Messages.Commands;
+    using System.Threading.Tasks;
 
     class SaveNewReservationCustomerDetailsHandler : IHandleMessages<SaveNewReservationCustomerDetails>
     {

@@ -1,9 +1,9 @@
 ﻿namespace CustomersRegistry.ServiceComponent
 {
+    using NServiceBus;
+    using Reservations.Messages.Events;
     using System;
     using System.Threading.Tasks;
-    using NServiceBus;
-    using Messages.Events;
 
     class NewReservationCompletedHandler : IHandleMessages<NewReservationCompleted>
     {

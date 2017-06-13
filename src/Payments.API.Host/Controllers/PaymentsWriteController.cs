@@ -1,12 +1,12 @@
 ﻿namespace Payments.API.Host.Controllers
 {
-    using System.Threading.Tasks;
-    using System.Web.Http;
-    using System.Web.Http.Results;
-    using Messages.Commands;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
     using NServiceBus;
+    using Reservations.Messages.Commands;
+    using System.Threading.Tasks;
+    using System.Web.Http;
+    using System.Web.Http.Results;
 
     [RoutePrefix("api/paymentswrite")]
     public class PaymentsWriteController : ApiController

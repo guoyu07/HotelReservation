@@ -1,7 +1,6 @@
 ﻿using Castle.MicroKernel.Registration;
 using Castle.Windsor;
 using Microsoft.Owin.Cors;
-using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 using NServiceBus;
 using Owin;
@@ -14,8 +13,8 @@ using System.Web.Http.Batch;
 
 namespace CustomersRegistry.API.Host
 {
-    using Messages.Commands;
     using NServiceBus.Features;
+    using Reservations.Messages.Commands;
 
     public class Startup
     {

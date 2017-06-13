@@ -13,8 +13,8 @@ using System.Web.Http.Batch;
 
 namespace Reservations.API.Host
 {
-    using Messages.Commands;
     using NServiceBus.Features;
+    using Reservations.Messages.Commands;
 
     public class Startup
     {
