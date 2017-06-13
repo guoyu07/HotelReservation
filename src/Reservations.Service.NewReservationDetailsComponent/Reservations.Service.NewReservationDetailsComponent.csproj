@@ -80,9 +80,9 @@
       <Project>{13338777-ccbe-4fa1-a169-da0e157cd1c8}</Project>
       <Name>Reservations.Messages.Commands</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Reservations.Messages\Reservations.Messages.csproj">
+    <ProjectReference Include="..\Reservations.Messages\Reservations.Messages.Events.csproj">
       <Project>{c0bccfbe-57f7-4d47-8743-576ad04cf7da}</Project>
-      <Name>Reservations.Messages</Name>
+      <Name>Reservations.Messages.Events</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
