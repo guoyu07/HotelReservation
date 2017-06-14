@@ -10,6 +10,7 @@
     {
         public async Task Handle(SaveNewPaymentDetails message, IMessageHandlerContext context)
         {
+            Console.WriteLine("...==============================...\r\n");
             Console.WriteLine("Procesing SaveNewPaymentDetails for \r\n ReservationId: {0} \r\n Amount: {1} \r\n Card Number: {2}", message.ReservationId, message.PaymentAmount, message.CardNumber);
 
             await context.Publish(new ReservationPaymentComplete

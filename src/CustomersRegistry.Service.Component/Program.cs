@@ -1,10 +1,7 @@
 ﻿namespace CustomersRegistry.Service.Component
 {
     using NServiceBus;
-    using NServiceBus.Persistence.Sql;
-    using Reservations.Messages.Events;
     using System;
-    using System.Data.SqlClient;
     using System.Threading.Tasks;
 
     class Program
@@ -20,30 +17,15 @@
 
             var endpointConfiguration = new EndpointConfiguration("CustomersRegistry.Service.Component");
             endpointConfiguration.UseSerialization<JsonSerializer>();
-            var persistence = endpointConfiguration.UsePersistence<SqlPersistence>();
-            var subscriptions = persistence.SubscriptionSettings();
-            subscriptions.CacheFor(TimeSpan.FromMinutes(1));
-            var connection = @"Data Source=.\SQLEXPRESS;Initial Catalog=HotelReservationsPersistence;Integrated Security=True";
-            persistence.SqlVariant(SqlVariant.MsSqlServer);
-            persistence.ConnectionBuilder(
-                connectionBuilder: () =>
-                {
-                    return new SqlConnection(connection);
-                });
-
-            var transportExtensions = endpointConfiguration.UseTransport<MsmqTransport>();
-            var routing = transportExtensions.Routing();
-            routing.RegisterPublisher(
-                assembly: typeof(NewReservationCompleted).Assembly,
-                publisherEndpoint: "Reservations.Service.NewReservationDetailsComponent");
-
+            endpointConfiguration.UsePersistence<LearningPersistence>();
+            endpointConfiguration.UseTransport<LearningTransport>();
+           
             endpointConfiguration.HeartbeatPlugin(
                 serviceControlQueue: "particular.servicecontrol",
                 frequency: TimeSpan.FromSeconds(30),
                 timeToLive: TimeSpan.FromMinutes(3));
             endpointConfiguration.SendFailedMessagesTo("error");
             endpointConfiguration.AuditProcessedMessagesTo("audit");
-            endpointConfiguration.EnableInstallers();
 
             var endpointInstance = await Endpoint.Start(endpointConfiguration)
                 .ConfigureAwait(false);

@@ -3,7 +3,7 @@
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
     using NServiceBus;
-    using Reservations.Messages.Commands;
+    using Messages.Commands;
     using System.Threading.Tasks;
     using System.Web.Http;
     using System.Web.Http.Results;

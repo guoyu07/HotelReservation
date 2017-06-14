@@ -55,15 +55,6 @@
     <PackageReference Include="NServiceBus">
       <Version>6.3.4</Version>
     </PackageReference>
-    <PackageReference Include="NServiceBus.Persistence.Sql">
-      <Version>2.1.1</Version>
-    </PackageReference>
-    <PackageReference Include="NServiceBus.Persistence.Sql.MsBuild">
-      <Version>2.1.1</Version>
-    </PackageReference>
-    <PackageReference Include="NServiceBus.Persistence.Sql.ScriptBuilder">
-      <Version>2.1.1</Version>
-    </PackageReference>
     <PackageReference Include="ServiceControl.Plugin.Nsb6.Heartbeat">
       <Version>3.0.1</Version>
     </PackageReference>

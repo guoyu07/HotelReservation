@@ -1,13 +1,16 @@
 ﻿using NServiceBus;
-using NServiceBus.Configuration.AdvanceExtensibility;
 using ServiceControl.TransportAdapter;
 using System;
 using System.Threading.Tasks;
 
 namespace HotelReservation.ServiceControlAdapter
 {
+    using NServiceBus.Configuration.AdvanceExtensibility;
+
     class Program
     {
+        const string adapterName = "HotelReservation.ServiceControlAdapter";
+
         static void Main(string[] args)
         {
             AsyncMain().GetAwaiter().GetResult();
@@ -15,14 +18,16 @@ namespace HotelReservation.ServiceControlAdapter
 
         static async Task AsyncMain()
         {
-            var adapterName = typeof(Program).Namespace;
             Console.Title = adapterName;
 
             var config = new TransportAdapterConfig<LearningTransport, MsmqTransport>(adapterName);
-            config.CustomizeServiceControlTransport(c =>
-            {
-                c.GetSettings().Set("errorQueue", "error");
-            });
+
+            config.CustomizeServiceControlTransport(
+                customization: transport =>
+                {
+                    //HACK: Latest MSMQ requires this setting. To be moved to the transport adapter core.
+                    transport.GetSettings().Set("errorQueue", "poison");
+                });
 
             var adapter = TransportAdapter.Create(config);
             await adapter.Start().ConfigureAwait(false);
