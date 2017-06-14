@@ -4,7 +4,7 @@
     using Payments.Messages.Commands;
     using System;
     using System.Threading.Tasks;
-    using Messages.Events;
+    using Reservations.Messages.Events;
 
     class SaveNewPaymentDetailsHandler : IHandleMessages<SaveNewPaymentDetails>
     {

@@ -76,6 +76,10 @@
       <Project>{82cbe85c-7c01-4584-8d7c-2ac16a918973}</Project>
       <Name>Payments.Messages.Commands</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Reservations.Messages\Reservations.Messages.Events.csproj">
+      <Project>{C0BCCFBE-57F7-4D47-8743-576AD04CF7DA}</Project>
+      <Name>Reservations.Messages.Events</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
