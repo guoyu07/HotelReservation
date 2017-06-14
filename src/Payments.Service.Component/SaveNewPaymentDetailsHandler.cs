@@ -1,7 +1,7 @@
 ﻿namespace Payments.Service.Component
 {
     using NServiceBus;
-    using Payments.Messages.Commands;
+    using Messages.Commands;
     using System;
     using System.Threading.Tasks;
     using Reservations.Messages.Events;
