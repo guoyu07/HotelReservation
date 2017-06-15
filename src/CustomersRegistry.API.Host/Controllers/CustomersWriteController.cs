@@ -1,12 +1,12 @@
 ﻿namespace CustomersRegistry.API.Host.Controllers
 {
-    using System.Threading.Tasks;
-    using NServiceBus;
-    using System.Web.Http;
-    using System.Web.Http.Results;
-    using Messages.Commands;
+    using CustomersRegistry.Messages.Commands;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using NServiceBus;
+    using System.Threading.Tasks;
+    using System.Web.Http;
+    using System.Web.Http.Results;
 
     [RoutePrefix("api/customerswrite")]
     public class CustomersWriteController : ApiController

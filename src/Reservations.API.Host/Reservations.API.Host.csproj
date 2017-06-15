@@ -8,9 +8,10 @@
     <OutputType>Exe</OutputType>
     <RootNamespace>Reservations.API.Host</RootNamespace>
     <AssemblyName>Reservations.API.Host</AssemblyName>
-    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -86,9 +87,9 @@
       <Project>{537b7942-d577-41af-bf4c-823eb983f570}</Project>
       <Name>MessageConventions</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Messages\Messages.csproj">
-      <Project>{c0bccfbe-57f7-4d47-8743-576ad04cf7da}</Project>
-      <Name>Messages</Name>
+    <ProjectReference Include="..\Reservations.Messages.Commands\Reservations.Messages.Commands.csproj">
+      <Project>{13338777-ccbe-4fa1-a169-da0e157cd1c8}</Project>
+      <Name>Reservations.Messages.Commands</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

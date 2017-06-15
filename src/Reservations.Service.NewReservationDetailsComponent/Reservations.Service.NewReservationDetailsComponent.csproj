@@ -8,9 +8,10 @@
     <OutputType>Exe</OutputType>
     <RootNamespace>Reservations.Service.NewReservationDetailsComponent</RootNamespace>
     <AssemblyName>Reservations.Service.NewReservationDetailsComponent</AssemblyName>
-    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -54,15 +55,6 @@
     <PackageReference Include="NServiceBus">
       <Version>6.3.4</Version>
     </PackageReference>
-    <PackageReference Include="NServiceBus.Persistence.Sql">
-      <Version>2.1.1</Version>
-    </PackageReference>
-    <PackageReference Include="NServiceBus.Persistence.Sql.MsBuild">
-      <Version>2.1.1</Version>
-    </PackageReference>
-    <PackageReference Include="NServiceBus.Persistence.Sql.ScriptBuilder">
-      <Version>2.1.1</Version>
-    </PackageReference>
     <PackageReference Include="ServiceControl.Plugin.Nsb6.Heartbeat">
       <Version>3.0.1</Version>
     </PackageReference>
@@ -75,9 +67,13 @@
       <Project>{537b7942-d577-41af-bf4c-823eb983f570}</Project>
       <Name>MessageConventions</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Messages\Messages.csproj">
+    <ProjectReference Include="..\Reservations.Messages.Commands\Reservations.Messages.Commands.csproj">
+      <Project>{13338777-ccbe-4fa1-a169-da0e157cd1c8}</Project>
+      <Name>Reservations.Messages.Commands</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Reservations.Messages\Reservations.Messages.Events.csproj">
       <Project>{c0bccfbe-57f7-4d47-8743-576ad04cf7da}</Project>
-      <Name>Messages</Name>
+      <Name>Reservations.Messages.Events</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

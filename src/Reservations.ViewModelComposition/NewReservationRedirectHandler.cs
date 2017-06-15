@@ -16,7 +16,7 @@ namespace Reservations.ViewModelComposition
                 //MVC
                 if (httpStatusCode == StatusCodes.Status200OK)
                 {
-                    context.Result = new RedirectToActionResult("Details", "Reservation", new { rid = viewModel.ReservationId });
+                    context.Result = new RedirectToActionResult("Summary", "Reservation", new { rid = viewModel.ReservationId });
                 }
             }
 

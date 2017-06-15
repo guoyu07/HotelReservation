@@ -1,7 +1,6 @@
 ﻿using Castle.MicroKernel.Registration;
 using Castle.Windsor;
 using Microsoft.Owin.Cors;
-using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 using NServiceBus;
 using Owin;
@@ -14,7 +13,7 @@ using System.Web.Http.Batch;
 
 namespace CustomersRegistry.API.Host
 {
-    using Messages.Commands;
+    using CustomersRegistry.Messages.Commands;
     using NServiceBus.Features;
 
     public class Startup
@@ -72,7 +71,7 @@ namespace CustomersRegistry.API.Host
             endpointConfiguration.UseSerialization<NServiceBus.JsonSerializer>();
             endpointConfiguration.UseContainer<WindsorBuilder>(c => c.ExistingContainer(container));
 
-            var transportExtensions = endpointConfiguration.UseTransport<MsmqTransport>();
+            var transportExtensions = endpointConfiguration.UseTransport<LearningTransport>();
             var routing = transportExtensions.Routing();
             routing.RouteToEndpoint(
                 messageType: typeof(SaveNewReservationCustomerDetails),

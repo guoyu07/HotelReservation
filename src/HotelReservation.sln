@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26403.7
+VisualStudioVersion = 15.0.26430.13
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ITOps", "ITOps", "{9C624413-311A-4BC3-8B7D-C0BD80654813}"
 EndProject
@@ -41,9 +41,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Payments.ViewComponents", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Reservations.ViewModelComposition", "Reservations.ViewModelComposition\Reservations.ViewModelComposition.csproj", "{42B98717-D9F1-4E3C-9472-CE79FBF99824}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Messages", "Messages", "{B3092CD1-B528-4C16-89DA-42B3DAA6820F}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared Conventions", "Shared Conventions", "{B3092CD1-B528-4C16-89DA-42B3DAA6820F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Messages", "Messages\Messages.csproj", "{C0BCCFBE-57F7-4D47-8743-576AD04CF7DA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Reservations.Messages.Events", "Reservations.Messages\Reservations.Messages.Events.csproj", "{C0BCCFBE-57F7-4D47-8743-576AD04CF7DA}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Reservations.Service.NewReservationDetailsComponent", "Reservations.Service.NewReservationDetailsComponent\Reservations.Service.NewReservationDetailsComponent.csproj", "{FD4A2D5D-2B51-4225-83CB-99CBD03F291E}"
 EndProject
@@ -53,7 +53,17 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Payments.Service.Component"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MessageConventions", "MessageConventions\MessageConventions.csproj", "{537B7942-D577-41AF-BF4C-823EB983F570}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomerRegistry.Data", "CustomerRegistry.Data\CustomerRegistry.Data.csproj", "{A840298B-0962-43E3-92A3-F55453D26EE5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomersRegistry.Data", "CustomersRegistry.Data\CustomersRegistry.Data.csproj", "{A840298B-0962-43E3-92A3-F55453D26EE5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomersRegistry.Messages.Commands", "CustomersRegistry.Messages.Commands\CustomersRegistry.Messages.Commands.csproj", "{A59A67F8-9B5F-4AC1-89F7-50A714C29BB0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Payments.Messages.Commands", "Payments.Messages.Commands\Payments.Messages.Commands.csproj", "{82CBE85C-7C01-4584-8D7C-2AC16A918973}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Reservations.Messages.Commands", "Reservations.Messages.Commands\Reservations.Messages.Commands.csproj", "{13338777-CCBE-4FA1-A169-DA0E157CD1C8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HotelReservation.ServiceControlAdapter", "HotelReservation.ServiceControlAdapter\HotelReservation.ServiceControlAdapter.csproj", "{275E6F47-AA2A-4D3A-B8BA-2987724207C1}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{3138D64E-9699-47C1-BA87-8ECF97A6C7C6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -145,6 +155,22 @@ Global
 		{A840298B-0962-43E3-92A3-F55453D26EE5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A840298B-0962-43E3-92A3-F55453D26EE5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A840298B-0962-43E3-92A3-F55453D26EE5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A59A67F8-9B5F-4AC1-89F7-50A714C29BB0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A59A67F8-9B5F-4AC1-89F7-50A714C29BB0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A59A67F8-9B5F-4AC1-89F7-50A714C29BB0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A59A67F8-9B5F-4AC1-89F7-50A714C29BB0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{82CBE85C-7C01-4584-8D7C-2AC16A918973}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{82CBE85C-7C01-4584-8D7C-2AC16A918973}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{82CBE85C-7C01-4584-8D7C-2AC16A918973}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{82CBE85C-7C01-4584-8D7C-2AC16A918973}.Release|Any CPU.Build.0 = Release|Any CPU
+		{13338777-CCBE-4FA1-A169-DA0E157CD1C8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{13338777-CCBE-4FA1-A169-DA0E157CD1C8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{13338777-CCBE-4FA1-A169-DA0E157CD1C8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{13338777-CCBE-4FA1-A169-DA0E157CD1C8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{275E6F47-AA2A-4D3A-B8BA-2987724207C1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{275E6F47-AA2A-4D3A-B8BA-2987724207C1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{275E6F47-AA2A-4D3A-B8BA-2987724207C1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{275E6F47-AA2A-4D3A-B8BA-2987724207C1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -164,11 +190,15 @@ Global
 		{142A7C13-C6D6-45D6-87C9-E54DADFD451D} = {10FB8E8F-35B6-4E0F-A0B8-D355195A56EE}
 		{B7FFF997-4147-430E-9FAB-AEF98FA38D18} = {10FB8E8F-35B6-4E0F-A0B8-D355195A56EE}
 		{42B98717-D9F1-4E3C-9472-CE79FBF99824} = {8751E1C0-4AA8-497F-857B-EF5BEB2CE88B}
-		{C0BCCFBE-57F7-4D47-8743-576AD04CF7DA} = {B3092CD1-B528-4C16-89DA-42B3DAA6820F}
+		{C0BCCFBE-57F7-4D47-8743-576AD04CF7DA} = {8751E1C0-4AA8-497F-857B-EF5BEB2CE88B}
 		{FD4A2D5D-2B51-4225-83CB-99CBD03F291E} = {8751E1C0-4AA8-497F-857B-EF5BEB2CE88B}
 		{C0102DC5-E065-4ECD-B627-0B40F4EDC9FE} = {7384DBE3-9DA1-48FD-81F6-18A5319BC97B}
 		{9D055C3E-1D05-4F50-99C8-783D0D83F8BE} = {10FB8E8F-35B6-4E0F-A0B8-D355195A56EE}
 		{537B7942-D577-41AF-BF4C-823EB983F570} = {B3092CD1-B528-4C16-89DA-42B3DAA6820F}
 		{A840298B-0962-43E3-92A3-F55453D26EE5} = {7384DBE3-9DA1-48FD-81F6-18A5319BC97B}
+		{A59A67F8-9B5F-4AC1-89F7-50A714C29BB0} = {7384DBE3-9DA1-48FD-81F6-18A5319BC97B}
+		{82CBE85C-7C01-4584-8D7C-2AC16A918973} = {10FB8E8F-35B6-4E0F-A0B8-D355195A56EE}
+		{13338777-CCBE-4FA1-A169-DA0E157CD1C8} = {8751E1C0-4AA8-497F-857B-EF5BEB2CE88B}
+		{275E6F47-AA2A-4D3A-B8BA-2987724207C1} = {3138D64E-9699-47C1-BA87-8ECF97A6C7C6}
 	EndGlobalSection
 EndGlobal

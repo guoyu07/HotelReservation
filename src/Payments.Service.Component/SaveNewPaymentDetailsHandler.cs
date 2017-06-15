@@ -1,17 +1,24 @@
-﻿namespace Reservations.Service.NewReservationDetailsComponent
+﻿namespace Payments.Service.Component
 {
+    using NServiceBus;
+    using Messages.Commands;
     using System;
     using System.Threading.Tasks;
-    using Messages.Commands;
-    using NServiceBus;
+    using Reservations.Messages.Events;
 
     class SaveNewPaymentDetailsHandler : IHandleMessages<SaveNewPaymentDetails>
     {
-        public Task Handle(SaveNewPaymentDetails message, IMessageHandlerContext context)
+        public async Task Handle(SaveNewPaymentDetails message, IMessageHandlerContext context)
         {
+            Console.WriteLine("...==============================...\r\n");
             Console.WriteLine("Procesing SaveNewPaymentDetails for \r\n ReservationId: {0} \r\n Amount: {1} \r\n Card Number: {2}", message.ReservationId, message.PaymentAmount, message.CardNumber);
 
-            return Task.FromResult(0);
+            await context.Publish(new ReservationPaymentComplete
+            {
+                ReservationId = message.ReservationId,
+                PaymentId = message.PaymentId,
+                PaymentAmount = message.PaymentAmount,
+            });
         }
     }
 }

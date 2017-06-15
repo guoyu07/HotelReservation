@@ -13,8 +13,8 @@ using System.Web.Http.Batch;
 
 namespace Payments.API.Host
 {
-    using Messages.Commands;
     using NServiceBus.Features;
+    using Payments.Messages.Commands;
 
     public class Startup
     {
@@ -71,7 +71,7 @@ namespace Payments.API.Host
             endpointConfiguration.UseSerialization<NServiceBus.JsonSerializer>();
             endpointConfiguration.UseContainer<WindsorBuilder>(c => c.ExistingContainer(container));
 
-            var transportExtensions = endpointConfiguration.UseTransport<MsmqTransport>();
+            var transportExtensions = endpointConfiguration.UseTransport<LearningTransport>();
             var routing = transportExtensions.Routing();
             routing.RouteToEndpoint(
                 messageType: typeof(SaveNewPaymentDetails),

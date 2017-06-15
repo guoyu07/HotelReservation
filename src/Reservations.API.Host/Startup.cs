@@ -13,8 +13,8 @@ using System.Web.Http.Batch;
 
 namespace Reservations.API.Host
 {
-    using Messages.Commands;
     using NServiceBus.Features;
+    using Reservations.Messages.Commands;
 
     public class Startup
     {
@@ -71,7 +71,7 @@ namespace Reservations.API.Host
             endpointConfiguration.UseSerialization<NServiceBus.JsonSerializer>();
             endpointConfiguration.UseContainer<WindsorBuilder>(c => c.ExistingContainer(container));
 
-            var transportExtensions = endpointConfiguration.UseTransport<MsmqTransport>();
+            var transportExtensions = endpointConfiguration.UseTransport<LearningTransport>();
 
             endpointConfiguration.HeartbeatPlugin(
                 serviceControlQueue: "particular.servicecontrol",

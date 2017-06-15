@@ -8,9 +8,10 @@
     <OutputType>Exe</OutputType>
     <RootNamespace>CustomersRegistry.API.Host</RootNamespace>
     <AssemblyName>CustomersRegistry.API.Host</AssemblyName>
-    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -85,17 +86,17 @@
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\CustomerRegistry.Data\CustomerRegistry.Data.csproj">
-      <Project>{A840298B-0962-43E3-92A3-F55453D26EE5}</Project>
-      <Name>CustomerRegistry.Data</Name>
+    <ProjectReference Include="..\CustomersRegistry.Data\CustomersRegistry.Data.csproj">
+      <Project>{a840298b-0962-43e3-92a3-f55453d26ee5}</Project>
+      <Name>CustomersRegistry.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CustomersRegistry.Messages.Commands\CustomersRegistry.Messages.Commands.csproj">
+      <Project>{a59a67f8-9b5f-4ac1-89f7-50a714c29bb0}</Project>
+      <Name>CustomersRegistry.Messages.Commands</Name>
     </ProjectReference>
     <ProjectReference Include="..\MessageConventions\MessageConventions.csproj">
       <Project>{537b7942-d577-41af-bf4c-823eb983f570}</Project>
       <Name>MessageConventions</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Messages\Messages.csproj">
-      <Project>{C0BCCFBE-57F7-4D47-8743-576AD04CF7DA}</Project>
-      <Name>Messages</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

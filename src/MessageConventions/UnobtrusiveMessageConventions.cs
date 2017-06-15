@@ -8,11 +8,9 @@
         {
             configuration.Conventions()
                 .DefiningCommandsAs(t =>
-                    t.Namespace != null && t.Namespace.StartsWith("Messages") &&
-                    t.Namespace.EndsWith("Commands"))
+                    t.Namespace != null && t.Namespace.EndsWith("Messages.Commands"))
                 .DefiningEventsAs(t =>
-                    t.Namespace != null && t.Namespace.StartsWith("Messages") &&
-                    t.Namespace.EndsWith("Events"));
+                    t.Namespace != null && t.Namespace.EndsWith("Messages.Events"));
         }
     }
 }

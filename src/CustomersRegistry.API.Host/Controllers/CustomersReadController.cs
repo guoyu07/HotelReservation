@@ -2,7 +2,7 @@
 {
     using System.Linq;
     using System.Web.Http;
-    using CustomerRegistry.Data.Context;
+    using Data.Context;
 
     [RoutePrefix("api/customersread")]
     public class CustomersReadController : ApiController
