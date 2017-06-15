@@ -21,7 +21,6 @@ In order to run the sample the following machine configuration is required:
 
 ```
 Set-ExecutionPolicy Unrestricted
-
 ```
 
 - Visual Studio 2015 Update 3 (Community Edition is supported), available for download at [https://www.visualstudio.com/downloads/](https://www.visualstudio.com/downloads/)
