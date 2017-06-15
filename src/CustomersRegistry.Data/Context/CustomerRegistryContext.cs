@@ -6,7 +6,7 @@
 
     public class CustomerRegistryContext : DbContext
     {
-        public CustomerRegistryContext() : base("Reservations.Customers")
+        public CustomerRegistryContext() : base("CustomerRegistryContext")
         {
         }
 
