@@ -1,15 +1,14 @@
-﻿using ITOps.ViewModelComposition;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Routing;
-using System;
-using System.Threading.Tasks;
-
-namespace Payments.ViewModelComposition
+﻿namespace Payments.ViewModelComposition
 {
+    using System;
     using System.Net;
     using System.Net.Http;
     using System.Net.Http.Headers;
     using System.Text;
+    using System.Threading.Tasks;
+    using ITOps.ViewModelComposition;
+    using Microsoft.AspNetCore.Http;
+    using Microsoft.AspNetCore.Routing;
     using Model;
     using Newtonsoft.Json;
 

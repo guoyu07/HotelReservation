@@ -27,5 +27,17 @@
 
             return new OkResult(this.Request);
         }
+
+        [HttpPost]
+        [Route("~/api/reservationswrite/{id}/cancel")]
+        public async Task<IHttpActionResult> CancelReservation([FromBody]JToken jsonbody, string id)
+        {
+        CancelReservationByUser cancelReservationByUser = JsonConvert.DeserializeObject<CancelReservationByUser>(jsonbody.ToString());
+
+        await _endpointSession.Send(cancelReservationByUser)
+            .ConfigureAwait(false);
+
+            return new OkResult(this.Request);
+        }
     }
 }

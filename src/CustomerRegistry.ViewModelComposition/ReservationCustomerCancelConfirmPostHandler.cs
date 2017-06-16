@@ -11,7 +11,7 @@
     using Model;
     using Newtonsoft.Json;
 
-    class ReservationCustomerSummaryGetHandler : IHandleRequests
+    class ReservationCustomerCancelConfirmPostHandler : IHandleRequests
     {
         public bool Matches(RouteData routeData, string httpVerb, HttpRequest request)
         {
@@ -19,9 +19,9 @@
             var controller = (string)routeData.Values["controller"];
             var action = (string)routeData.Values["action"];
 
-            return HttpMethods.IsGet(httpVerb)
+            return HttpMethods.IsPost(httpVerb)
                 && controller.ToLowerInvariant() == "reservation"
-                && action.ToLowerInvariant() == "summary";
+                && action.ToLowerInvariant() == "cancelconfirm";
         }
 
         public async Task HandleAsync(dynamic vm, RouteData routeData, HttpRequest request)

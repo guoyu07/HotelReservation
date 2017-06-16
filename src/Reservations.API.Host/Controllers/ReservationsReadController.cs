@@ -21,8 +21,8 @@
         }
 
         [HttpGet]
-        [Route("api/reservationsread/{id}")]
-        public dynamic GetById(string reservationId)
+        [Route("~/api/reservationsread/{id}")]
+        public dynamic GetById(string id)
         {
             return new
             {
@@ -32,7 +32,7 @@
                 PayAtHotel = true,
                 CustomerComments = "",
                 HotelName = "Sample Hotel",
-                ReservationId = reservationId,
+                ReservationId = id,
             };
         }
     }

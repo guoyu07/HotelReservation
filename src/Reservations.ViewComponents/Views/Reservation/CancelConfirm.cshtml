@@ -1,0 +1,21 @@
+@{
+    ViewData["Title"] = "Confirm Cancel Reservation";
+}
+
+<h2>@ViewData["Title"]</h2>
+<form action="/reservation/cancel" method="post">
+    <input type="hidden" id="ReservationId" name="ReservationId" value="@Model.ReservationId">
+    <div>
+        @await Component.InvokeAsync("ReservationCustomerCancelConfirm", Model)
+    </div>
+    <div>
+        @await Component.InvokeAsync("ReservationPaymentCancelConfirm", Model)
+    </div>
+    <div>
+        @await Component.InvokeAsync("ReservationCancelConfirmForm", Model)
+    </div>
+    <div><h2>Are you sure you want to cancel your reservation?</h2></div>
+    <div>
+        <input type="submit" value="Yes, Cancel Reservation" />
+    </div>
+</form>

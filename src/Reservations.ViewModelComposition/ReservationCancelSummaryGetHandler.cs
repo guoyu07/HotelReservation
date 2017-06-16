@@ -10,7 +10,7 @@
     using Model;
     using Newtonsoft.Json;
 
-    class ReservationSummaryGetHandler : IHandleRequests
+    class ReservationCancelSummaryGetHandler : IHandleRequests
     {
         public bool Matches(RouteData routeData, string httpVerb, HttpRequest request)
         {
@@ -20,7 +20,7 @@
 
             return HttpMethods.IsGet(httpVerb)
                 && controller.ToLowerInvariant() == "reservation"
-                && action.ToLowerInvariant() == "summary";
+                && action.ToLowerInvariant() == "cancelsummary";
         }
 
         public async Task HandleAsync(dynamic vm, RouteData routeData, HttpRequest request)

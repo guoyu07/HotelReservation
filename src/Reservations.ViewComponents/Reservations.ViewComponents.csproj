@@ -9,10 +9,14 @@
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Include="Views\Reservation\Cancel.cshtml" />
+    <EmbeddedResource Include="Views\Reservation\CancelSummary.cshtml" />
+    <EmbeddedResource Include="Views\Reservation\Components\ReservationCancelConfirmForm\Default.cshtml" />
     <EmbeddedResource Include="Views\Reservation\Components\ReservationSummary\Default.cshtml" />
     <EmbeddedResource Include="Views\Reservation\Summary.cshtml" />
     <EmbeddedResource Include="Views\Reservation\Components\ReservationDetailsForm\Default.cshtml" />
     <EmbeddedResource Include="Views\Reservation\New.cshtml" />
+    <EmbeddedResource Include="Views\Reservation\CancelConfirm.cshtml" />
   </ItemGroup>
 
   <ItemGroup>

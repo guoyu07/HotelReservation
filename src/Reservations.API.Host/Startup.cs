@@ -60,6 +60,8 @@ namespace Reservations.API.Host
                 routeTemplate: "api/batch",
                 batchHandler: new DefaultHttpBatchHandler(server)
             );
+           
+            config.EnsureInitialized();
 
             appBuilder.UseCors(CorsOptions.AllowAll);
             appBuilder.UseWebApi(config);
@@ -81,6 +83,10 @@ namespace Reservations.API.Host
             var routing = transportExtensions.Routing();
             routing.RouteToEndpoint(
                 messageType: typeof(SaveNewReservationDetails),
+                destination: "Reservations.Service.NewReservationDetailsComponent");
+
+            routing.RouteToEndpoint(
+                messageType: typeof(CancelReservationByUser),
                 destination: "Reservations.Service.NewReservationDetailsComponent");
 
             endpointConfiguration.SendFailedMessagesTo("error");

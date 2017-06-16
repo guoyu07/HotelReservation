@@ -1,11 +1,10 @@
-﻿using ITOps.ViewModelComposition;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Routing;
-using System.Threading.Tasks;
-
-namespace Payments.ViewModelComposition
+﻿namespace Payments.ViewModelComposition
 {
     using System;
+    using System.Threading.Tasks;
+    using ITOps.ViewModelComposition;
+    using Microsoft.AspNetCore.Http;
+    using Microsoft.AspNetCore.Routing;
 
     class NewReservationPaymentGetHandler : IHandleRequests
     {

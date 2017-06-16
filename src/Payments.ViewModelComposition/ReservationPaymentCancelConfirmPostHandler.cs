@@ -6,7 +6,7 @@
     using Microsoft.AspNetCore.Http;
     using Microsoft.AspNetCore.Routing;
 
-    class ReservationPaymentSummaryGetHandler : IHandleRequests
+    class ReservationPaymentCancelConfirmPostHandler : IHandleRequests
     {
         public bool Matches(RouteData routeData, string httpVerb, HttpRequest request)
         {
@@ -14,9 +14,9 @@
             var controller = (string)routeData.Values["controller"];
             var action = (string)routeData.Values["action"];
 
-            return HttpMethods.IsGet(httpVerb)
+            return HttpMethods.IsPost(httpVerb)
                 && controller.ToLowerInvariant() == "reservation"
-                && action.ToLowerInvariant() == "summary";
+                && action.ToLowerInvariant() == "cancelconfirm";
         }
 
         public Task HandleAsync(dynamic vm, RouteData routeData, HttpRequest request)
@@ -27,6 +27,8 @@
              * Get reservation details from WebAPI
              */
             // mock data
+            // make a hidden card number
+            vm.HiddenCardNumber = "************7448";
             vm.CardNumber = "4580471162187448";
             vm.ExpieryDateMonth = "09";
             vm.ExpieryDateYear = "20";

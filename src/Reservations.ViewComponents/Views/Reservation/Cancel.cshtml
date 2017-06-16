@@ -1,0 +1,8 @@
+@{
+    ViewData["Title"] = "Cancel Reservation";
+}
+
+<h2>@ViewData["Title"]</h2>
+<form action="/reservation/cancel" method="post">
+    <input type="hidden" id="ReservationId" name="ReservationId" value="@Model.ReservationId">
+</form>

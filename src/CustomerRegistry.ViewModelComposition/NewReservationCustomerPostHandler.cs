@@ -77,7 +77,7 @@
         private async Task<HttpResponseMessage> CustomerWriteApiTask(HttpContent content)
         {
             const string uri = "http://localhost:8181";
-            const string url = "/api/customerswrite";
+            const string url = "/api/customerswrite/cancel";
 
             HttpClient httpClient = new HttpClient {BaseAddress = new Uri(uri)};
 

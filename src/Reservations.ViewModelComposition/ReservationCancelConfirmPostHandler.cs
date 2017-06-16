@@ -10,7 +10,7 @@
     using Model;
     using Newtonsoft.Json;
 
-    class ReservationSummaryGetHandler : IHandleRequests
+    class ReservationCancelConfirmPostHandler : IHandleRequests
     {
         public bool Matches(RouteData routeData, string httpVerb, HttpRequest request)
         {
@@ -18,26 +18,31 @@
             var controller = (string)routeData.Values["controller"];
             var action = (string)routeData.Values["action"];
 
-            return HttpMethods.IsGet(httpVerb)
+            return HttpMethods.IsPost(httpVerb)
                 && controller.ToLowerInvariant() == "reservation"
-                && action.ToLowerInvariant() == "summary";
+                && action.ToLowerInvariant() == "cancelconfirm";
         }
 
         public async Task HandleAsync(dynamic vm, RouteData routeData, HttpRequest request)
         {
-            var reservationId = request.Query["rid"];
+            string reservationId = request.Query["rid"];
+
+            if (reservationId == null)
+            {
+                reservationId = request.Form["reservationId"];
+            }
 
             /*
              * Get reservation details from WebAPI
              */
             var reservationDetails = await GetReservationDetailsAsync(reservationId);
-
-            MapCustomerDetailsToDynamic(vm, reservationDetails, reservationId);
+       
+            MapCustomerDetailsToDynamic(vm, reservationDetails);
         }
 
-        public static void MapCustomerDetailsToDynamic(dynamic vm, ReservationDetailsModel reservationDetails,string reservationId)
+        public static void MapCustomerDetailsToDynamic(dynamic vm, ReservationDetailsModel reservationDetails)
         {
-            vm.ReservationId = reservationId;
+            vm.ReservationId = reservationDetails.ReservationId;
             vm.CustomerId = reservationDetails.CustomerId;
             vm.HotelId = reservationDetails.HotelId;
             vm.CheckIn = reservationDetails.CheckIn;

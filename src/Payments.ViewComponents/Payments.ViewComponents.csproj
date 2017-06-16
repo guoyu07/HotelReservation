@@ -5,6 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <EmbeddedResource Include="Views\Reservation\Components\ReservationPaymentCancelConfirm\Default.cshtml" />
     <EmbeddedResource Include="Views\Reservation\Components\ReservationPaymentSummary\Default.cshtml" />
     <EmbeddedResource Include="Views\Reservation\Components\ReservationPaymentForm\Default.cshtml" />
   </ItemGroup>

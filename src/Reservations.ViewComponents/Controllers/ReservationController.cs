@@ -22,5 +22,23 @@ namespace Reservations.ViewComponents
         {
             return View();
         }
+
+        [HttpPost]
+        public IActionResult CancelConfirm(IFormCollection form)
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult Cancel(IFormCollection form)
+        {
+            return View();
+        }
+
+        [HttpGet]
+        public IActionResult CancelSummary(Guid rid)
+        { 
+            return View();
+        }
     }
 }
