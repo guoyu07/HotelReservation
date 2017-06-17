@@ -60,7 +60,9 @@
 
             // kick off a cancelation process 
 
-            return Task.FromResult(0);
+            // publish an event
+            var reservationCanceledByUser = new ReservationCanceledByUser { ReservationId = message.ReservationId, CustomerId = message.CustomerId, ReservationCancelationDate = message.ReservationCancelationDate};
+            return context.Publish(reservationCanceledByUser);
         }
 
         public Task Handle(ReservationPaymentComplete message, IMessageHandlerContext context)

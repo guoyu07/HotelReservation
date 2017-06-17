@@ -22,6 +22,7 @@
                 return query.ToArray();
             }
         }
+
         [HttpGet]
         [Route("~/api/paymentsread/reservation/{id}")]
         public dynamic GetByReservationId(string id)

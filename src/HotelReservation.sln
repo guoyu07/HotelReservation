@@ -67,6 +67,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastru
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Payments.Data", "Payments.Data\Payments.Data.csproj", "{F2D44150-5433-43BA-B519-6912B1C47244}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Reservations.Data", "Reservations.Data\Reservations.Data.csproj", "{DAB0AE31-8BC4-4BE5-9B5E-BB51FE9C313A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -177,6 +179,10 @@ Global
 		{F2D44150-5433-43BA-B519-6912B1C47244}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F2D44150-5433-43BA-B519-6912B1C47244}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F2D44150-5433-43BA-B519-6912B1C47244}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DAB0AE31-8BC4-4BE5-9B5E-BB51FE9C313A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DAB0AE31-8BC4-4BE5-9B5E-BB51FE9C313A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DAB0AE31-8BC4-4BE5-9B5E-BB51FE9C313A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DAB0AE31-8BC4-4BE5-9B5E-BB51FE9C313A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -207,5 +213,6 @@ Global
 		{13338777-CCBE-4FA1-A169-DA0E157CD1C8} = {8751E1C0-4AA8-497F-857B-EF5BEB2CE88B}
 		{275E6F47-AA2A-4D3A-B8BA-2987724207C1} = {3138D64E-9699-47C1-BA87-8ECF97A6C7C6}
 		{F2D44150-5433-43BA-B519-6912B1C47244} = {10FB8E8F-35B6-4E0F-A0B8-D355195A56EE}
+		{DAB0AE31-8BC4-4BE5-9B5E-BB51FE9C313A} = {8751E1C0-4AA8-497F-857B-EF5BEB2CE88B}
 	EndGlobalSection
 EndGlobal

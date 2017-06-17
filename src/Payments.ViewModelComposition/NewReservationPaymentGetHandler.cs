@@ -38,11 +38,11 @@
 
         private async Task<ReservationPaymentDetailsModel> GetReservationPaymentDetailsAsync(string paymetId)
         {
-            var result = await CustomerReadAPIAsync(paymetId);
+            var result = await PaymentsReadAPIAsync(paymetId);
             return JsonConvert.DeserializeObject<IList<ReservationPaymentDetailsModel>>(await result.Content.ReadAsStringAsync())[0];
         }
 
-        private async Task<HttpResponseMessage> CustomerReadAPIAsync(string paymetId)
+        private async Task<HttpResponseMessage> PaymentsReadAPIAsync(string paymetId)
         {
             const string uri = "http://localhost:8182";
             const string url = "/api/paymentsread";

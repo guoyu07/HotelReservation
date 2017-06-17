@@ -37,10 +37,10 @@
              */
             var reservationDetails = await GetReservationDetailsAsync(reservationId);
        
-            MapCustomerDetailsToDynamic(vm, reservationDetails);
+            MapReservationDetailsToDynamic(vm, reservationDetails);
         }
 
-        public static void MapCustomerDetailsToDynamic(dynamic vm, ReservationDetailsModel reservationDetails)
+        public static void MapReservationDetailsToDynamic(dynamic vm, ReservationDetailsModel reservationDetails)
         {
             vm.ReservationId = reservationDetails.ReservationId;
             vm.CustomerId = reservationDetails.CustomerId;
@@ -55,11 +55,11 @@
 
         private async Task<ReservationDetailsModel> GetReservationDetailsAsync(string reservationId)
         {
-            var result = await CustomerReadAPIAsync(reservationId);
+            var result = await ReservationsReadAPIAsync(reservationId);
             return JsonConvert.DeserializeObject<ReservationDetailsModel>(await result.Content.ReadAsStringAsync());
         }
 
-        private async Task<HttpResponseMessage> CustomerReadAPIAsync(string reservationId)
+        private async Task<HttpResponseMessage> ReservationsReadAPIAsync(string reservationId)
         {
             const string uri = "http://localhost:8183";
             const string url = "/api/reservationsread";
