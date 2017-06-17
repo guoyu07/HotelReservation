@@ -21,7 +21,7 @@
                 ExpieryDateYear = form["ExpieryDateYear"],
                 CCV = form["CCV"],
                 PaymentAmount = form["PaymentAmount"],
-
+                CardType = form["CardType"],
                 CustomerId = form["CustomerId"],
             };
         }

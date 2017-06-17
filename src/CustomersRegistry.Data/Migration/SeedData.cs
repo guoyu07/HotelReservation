@@ -19,7 +19,7 @@ namespace CustomersRegistry.Data.Migration
                     CustomerCity = "Milano",
                     CustomerZipCode = "20100",
                     CustomerPhoneNumber = "+39 337 123 098 12",
-                    CustomerId = Guid.NewGuid(),
+                    CustomerId = Guid.Parse("a099dc81-084e-4551-b5a1-8581463348c6"),
                 },
             };
         }

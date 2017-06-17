@@ -10,5 +10,6 @@
         public string ExpieryDateYear { get; set; }
         public string CCV { get; set; }
         public string PaymentAmount { get; set; }
+        public string CardType { get; set; }
     }
 }

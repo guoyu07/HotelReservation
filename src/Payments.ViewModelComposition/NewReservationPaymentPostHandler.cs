@@ -11,13 +11,11 @@
     using Microsoft.AspNetCore.Routing;
     using Model;
     using Newtonsoft.Json;
-
-    // rename this to NewPaymentSubmissionDetailsHandler??
+    
     partial class NewReservationPaymentPostHandler : IHandleRequests
     {
         public bool Matches(RouteData routeData, string httpVerb, HttpRequest request)
         {
-            //this is the POST interceptor when reservation is submitted
             var controller = (string)routeData.Values["controller"];
             var action = (string)routeData.Values["action"];
 
@@ -29,25 +27,17 @@
         public Task HandleAsync(dynamic vm, RouteData routeData, HttpRequest request)
         {
             var form = request.Form;
-            //var rid = request.Form["ReservationId"][0];
-
-            //var reservationId = new Guid(rid);
-
-            /*
-             * using credit card details from the FORM
-             * post them to the Payments WebAPI to start
-             * the payment process
-             */
-
             var paymentDetails = ReservationPaymentDetailsModelMapper.MapFormToPaymentDetailsModel(form);
+            paymentDetails.PaymentId = Guid.NewGuid().ToString();
 
-            PostReservationDetails(paymentDetails).Wait();
+            PostReservationPaymentDetails(paymentDetails).Wait();
+
             return Task.CompletedTask;
         }
 
-        private async Task PostReservationDetails(ReservationPaymentDetailsModel reservationDetails)
+        private async Task PostReservationPaymentDetails(ReservationPaymentDetailsModel reservationPaymentDetails)
         {
-            HttpContent jasonHttpContent = new StringContent(JsonConvert.SerializeObject(reservationDetails),
+            HttpContent jasonHttpContent = new StringContent(JsonConvert.SerializeObject(reservationPaymentDetails),
                 Encoding.UTF8, "application/json");
 
             var result = await ReservationPaymentWriteApiTask(jasonHttpContent);

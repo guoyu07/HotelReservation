@@ -1,10 +1,15 @@
 ﻿namespace Payments.ViewModelComposition
 {
     using System;
+    using System.Collections.Generic;
+    using System.Net.Http;
+    using System.Net.Http.Headers;
     using System.Threading.Tasks;
     using ITOps.ViewModelComposition;
     using Microsoft.AspNetCore.Http;
     using Microsoft.AspNetCore.Routing;
+    using Model;
+    using Newtonsoft.Json;
 
     class NewReservationPaymentGetHandler : IHandleRequests
     {
@@ -19,20 +24,46 @@
                 && action.ToLowerInvariant() == "new";
         }
 
-        public Task HandleAsync(dynamic vm, RouteData routeData, HttpRequest request)
+        public async Task HandleAsync(dynamic vm, RouteData routeData, HttpRequest request)
         {
             /*
              * pre-fill available data, if any, about user credit card
              */
 
-            // mock data
-            vm.CardNumber = "4580471162187448";
-            vm.ExpieryDateMonth = "09";
-            vm.ExpieryDateYear = "20";
-            vm.CCV = "***";
-            vm.PaymentAmount = "250";
-            vm.PaymentId = Guid.NewGuid();
-            return Task.CompletedTask;
+            var mockpaymentId = Guid.Parse("5f2f6ae6-a8e0-490b-81d9-78469fee677c");
+
+            var paymentDetails = await GetReservationPaymentDetailsAsync(mockpaymentId.ToString());
+            MapPaymentDetailsToDynamic(vm, paymentDetails);
+        }
+
+        private async Task<ReservationPaymentDetailsModel> GetReservationPaymentDetailsAsync(string paymetId)
+        {
+            var result = await CustomerReadAPIAsync(paymetId);
+            return JsonConvert.DeserializeObject<IList<ReservationPaymentDetailsModel>>(await result.Content.ReadAsStringAsync())[0];
+        }
+
+        private async Task<HttpResponseMessage> CustomerReadAPIAsync(string paymetId)
+        {
+            const string uri = "http://localhost:8182";
+            const string url = "/api/paymentsread";
+
+            HttpClient httpClient = new HttpClient { BaseAddress = new Uri(uri) };
+
+            httpClient.DefaultRequestHeaders.Accept.Clear();
+            httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+            return await httpClient.GetAsync(string.Format(url + "/{0}", paymetId));
+        }
+
+        private void MapPaymentDetailsToDynamic(dynamic vm, ReservationPaymentDetailsModel paymentDetailsDetails)
+        {
+            vm.PaymentAmount = paymentDetailsDetails.PaymentAmount;
+            vm.CardNumber = paymentDetailsDetails.CardNumber;
+            vm.ExpieryDateMonth = paymentDetailsDetails.ExpieryDateMonth;
+            vm.ExpieryDateYear = paymentDetailsDetails.ExpieryDateYear;
+            vm.CCV = paymentDetailsDetails.CCV;
+            vm.PaymentId = paymentDetailsDetails.PaymentId;
+            vm.CardType = paymentDetailsDetails.CardType;
         }
     }
 }

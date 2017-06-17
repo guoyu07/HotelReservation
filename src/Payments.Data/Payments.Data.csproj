@@ -4,17 +4,15 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{9D055C3E-1D05-4F50-99C8-783D0D83F8BE}</ProjectGuid>
-    <OutputType>Exe</OutputType>
-    <RootNamespace>Payments.Service.Component</RootNamespace>
-    <AssemblyName>Payments.Service.Component</AssemblyName>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <ProjectGuid>{F2D44150-5433-43BA-B519-6912B1C47244}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Payments.Data</RootNamespace>
+    <AssemblyName>Payments.Data</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
-    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -24,7 +22,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -43,41 +40,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Program.cs" />
+    <Compile Include="Context\PaymentsContext.cs" />
+    <Compile Include="Migration\DatabaseInitializer.cs" />
+    <Compile Include="Migration\SeedData.cs" />
+    <Compile Include="Models\ReservationPaymentDetails.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SaveNewPaymentDetailsHandler.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="EntityFramework">
       <Version>6.1.3</Version>
     </PackageReference>
-    <PackageReference Include="NServiceBus">
-      <Version>6.3.4</Version>
-    </PackageReference>
-    <PackageReference Include="ServiceControl.Plugin.Nsb6.Heartbeat">
-      <Version>3.0.1</Version>
-    </PackageReference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\MessageConventions\MessageConventions.csproj">
-      <Project>{537b7942-d577-41af-bf4c-823eb983f570}</Project>
-      <Name>MessageConventions</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Payments.Data\Payments.Data.csproj">
-      <Project>{F2D44150-5433-43BA-B519-6912B1C47244}</Project>
-      <Name>Payments.Data</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Payments.Messages.Commands\Payments.Messages.Commands.csproj">
-      <Project>{82cbe85c-7c01-4584-8d7c-2ac16a918973}</Project>
-      <Name>Payments.Messages.Commands</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Reservations.Messages\Reservations.Messages.Events.csproj">
-      <Project>{C0BCCFBE-57F7-4D47-8743-576AD04CF7DA}</Project>
-      <Name>Reservations.Messages.Events</Name>
-    </ProjectReference>
+    <None Include="App.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
