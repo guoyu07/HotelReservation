@@ -5,6 +5,8 @@
     using Messages.Events;
     using System;
     using System.Threading.Tasks;
+    using Data.Context;
+    using Data.Models;
 
     /// TODO: make that a saga and add a cancel reservation feature that publishes an event 
     /// and retract the reservation
@@ -15,8 +17,9 @@
         IAmStartedByMessages<ReservationPaymentComplete>
 
     {
-        public Task Handle(SaveNewReservationDetails message, IMessageHandlerContext context)
+        public async Task Handle(SaveNewReservationDetails message, IMessageHandlerContext context)
         {
+            // persist the data to the sagadata
             Data.ReservationId = message.ReservationId;
             Data.CustomerId = message.CustomerId;
             Data.CheckIn = message.CheckIn;
@@ -26,29 +29,39 @@
             Data.PayAtHotel = message.PayAtHotel;
             Data.ReservationSaved = true;
 
+            // insert a row to the view model
+            using (var db = new ResrvationsContext())
+            {
+                var reservation = db.ReservationViewModel;
+
+                reservation.Create<ReservationDetailsViewModel>();
+
+                ReservationDetailsViewModel reservationDetails = new ReservationDetailsViewModel
+                {
+                    Id = Guid.NewGuid(),
+                    ReservationId = Guid.Parse(message.ReservationId),
+                    CustomerId = Guid.Parse(message.CustomerId),
+                    CheckIn = message.CheckIn,
+                    CheckOut = message.CheckOut,
+                    HotelId = Guid.Parse(message.HotelId),
+                    CustomerComments = message.CustomerComments,
+                    UiState = "Completed",
+                    SubmissionDate = message.SubmissionDate.ToString(),
+                };
+
+                bool result;
+                reservationDetails.PayAtHotel = Boolean.TryParse(message.PayAtHotel, out result) && result;
+                reservationDetails.PayNow = !reservationDetails.PayAtHotel;
+
+                reservation.Add(reservationDetails);
+
+                await db.SaveChangesAsync();
+            }
+
             Console.WriteLine("...==============================...\r\n");
             Console.WriteLine("Procesing SaveNewReservationDetails for \r\n ReservationId: {0} \r\n HotelId: {1} \r\n CheckIn: {2} \r\n CustomerId: {3}", message.ReservationId, message.HotelId, message.CheckIn, message.CustomerId);
 
             CheckIfSagaIsComplete(context);
-
-            return Task.FromResult(0);
-        }
-
-        private void CheckIfSagaIsComplete(IMessageHandlerContext context)
-        {
-            if (Data.PaymentComplete && Data.ReservationSaved)
-            {
-                Data.SagaCompleted = true;
-
-                Console.WriteLine("Saga Completed for \r\n ReservationId: {0}", Data.ReservationId);
-
-                context.Publish<NewReservationCompleted>(
-                    m =>
-                    {
-                        m.ReservationId = Data.ReservationId;
-                        m.CustomerId = Data.CustomerId;
-                    });
-            }
         }
 
         public Task Handle(CancelReservationByUser message, IMessageHandlerContext context)
@@ -74,9 +87,28 @@
             Console.WriteLine("...==============================...\r\n");
             Console.WriteLine("Procesing ReservationPaymentComplete for \r\n ReservationId: {0} \r\n PaymentId: {1} \r\n PaymentAmount: {2}", message.ReservationId, message.PaymentId, message.PaymentAmount);
 
+            // TODO: add paymentId to the view model
+
             CheckIfSagaIsComplete(context);
 
             return Task.FromResult(0);
+        }
+
+        private void CheckIfSagaIsComplete(IMessageHandlerContext context)
+        {
+            if (Data.PaymentComplete && Data.ReservationSaved)
+            {
+                Data.ResrvationCompleted = true;
+
+                Console.WriteLine("Resrvation Completed for \r\n ReservationId: {0}", Data.ReservationId);
+
+                context.Publish<NewReservationCompleted>(
+                    m =>
+                    {
+                        m.ReservationId = Data.ReservationId;
+                        m.CustomerId = Data.CustomerId;
+                    });
+            }
         }
 
         protected override void ConfigureHowToFindSaga(SagaPropertyMapper<ReservationsSagaData> mapper)

@@ -12,5 +12,6 @@ namespace Reservations.ViewModelComposition.Model
         public string PayNow { get; set; }
         public string CustomerComments { get; set; }
         public string PaymentId { get; set; }
+        public string UiState { get; set; }
     }
 }

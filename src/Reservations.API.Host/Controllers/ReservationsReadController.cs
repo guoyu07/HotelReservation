@@ -1,6 +1,7 @@
 ﻿namespace Reservations.API.Host.Controllers
 {
     using System;
+    using System.Data.Entity;
     using System.Linq;
     using System.Web.Http;
     using Data.Context;
@@ -16,7 +17,7 @@
 
             using (var db = new ResrvationsContext())
             {
-                var query = db.Reservation
+                var query = db.ReservationViewModel
                     .Where(c => c.ReservationId == reservationId);
 
                 return query.ToArray();
@@ -29,10 +30,19 @@
         {
             Guid reservationId = Guid.Parse(id);
 
+            // we might want to poll here if we can't find the reservation in the DB...
+            // we could go to a view model :-)
+
             using (var db = new ResrvationsContext())
             {
-                var query = db.Reservation
-                    .Where(c => c.ReservationId == reservationId);
+                var query = db.ReservationViewModel
+                    .Where(c => (c.ReservationId == reservationId && c.UiState== "Completed"));
+
+                if (!query.Any())
+                {
+                    query = db.ReservationViewModel
+                        .Where(c => (c.ReservationId == reservationId && c.UiState == "Pending"));
+                }
 
                 return query.ToArray();
             }

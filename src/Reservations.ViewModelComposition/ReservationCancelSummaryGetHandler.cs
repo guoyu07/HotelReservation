@@ -1,6 +1,7 @@
 ﻿namespace Reservations.ViewModelComposition
 {
     using System;
+    using System.Collections.Generic;
     using System.Net.Http;
     using System.Net.Http.Headers;
     using System.Threading.Tasks;
@@ -46,12 +47,13 @@
             vm.PaymentId = reservationDetails.PaymentId;
             vm.CustomerComments = reservationDetails.CustomerComments;
             vm.HotelName = reservationDetails.HotelName;
+            vm.UiState = reservationDetails.UiState;
         }
 
         private async Task<ReservationDetailsModel> GetReservationDetailsAsync(string reservationId)
         {
             var result = await ReservationsReadAPIAsync(reservationId);
-            return JsonConvert.DeserializeObject<ReservationDetailsModel>(await result.Content.ReadAsStringAsync());
+            return JsonConvert.DeserializeObject<IList<ReservationDetailsModel>>(await result.Content.ReadAsStringAsync())[0];
         }
 
         private async Task<HttpResponseMessage> ReservationsReadAPIAsync(string reservationId)
@@ -64,7 +66,7 @@
             httpClient.DefaultRequestHeaders.Accept.Clear();
             httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
-            return await httpClient.GetAsync(string.Format(url + "/reservationId={0}", reservationId));
+            return await httpClient.GetAsync(string.Format(url + "/{0}", reservationId));
         }
     }
 }

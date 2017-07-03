@@ -15,6 +15,9 @@
         @await Component.InvokeAsync("ReservationSummary", Model)
     </div>
     <div>
+        <label>Reservation Status:</label>@Model.UiState
+    </div>
+    <div>
         <input type="submit" value="Cancel Reservation" />
     </div>
 </form>

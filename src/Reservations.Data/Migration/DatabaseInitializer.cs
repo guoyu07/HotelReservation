@@ -8,7 +8,7 @@
     {
         protected override void Seed(ResrvationsContext context)
         {
-            context.Reservation.AddOrUpdate(k => k.ReservationId, SeedData.Customers().ToArray());
+            context.ReservationViewModel.AddOrUpdate(k => k.Id, SeedData.Reservations().ToArray());
         }
     }
 }

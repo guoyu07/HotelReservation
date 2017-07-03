@@ -22,6 +22,8 @@
         {
             SaveNewReservationCustomerDetails saveNewReservationCustomerDetails = JsonConvert.DeserializeObject<SaveNewReservationCustomerDetails>(jsonbody.ToString());
 
+            // TODO: save customer details to the view model
+
             await _endpointSession.Send(saveNewReservationCustomerDetails)
                 .ConfigureAwait(false);
 

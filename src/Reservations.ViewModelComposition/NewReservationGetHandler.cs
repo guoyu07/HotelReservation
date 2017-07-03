@@ -32,7 +32,7 @@ namespace Reservations.ViewModelComposition
              * Add reservation details here
              * such as Hotel and check-in/out dates
              */
-            var mockResrrvationId = Guid.Parse("5f2f6ae6-a8e0-490b-81d9-78469fee677c");
+            var mockResrrvationId = Guid.Parse("976c44a6-20df-4af7-b1ca-70798ab9df41");
 
             var reservationDetails = await GetReservationReservationDetailsAsync(mockResrrvationId.ToString());
             MapReservationDetailsToDynamic(vm, reservationDetails, mockResrrvationId.ToString());
@@ -41,6 +41,8 @@ namespace Reservations.ViewModelComposition
         private async Task<ReservationDetailsModel> GetReservationReservationDetailsAsync(string reservationId)
         {
             var result = await ReservationsReadAPIAsync(reservationId);
+            // TODO: check that resutlt has items...
+
             return JsonConvert.DeserializeObject<IList<ReservationDetailsModel>>(await result.Content.ReadAsStringAsync())[0];
         }
 
@@ -59,15 +61,17 @@ namespace Reservations.ViewModelComposition
 
         public static void MapReservationDetailsToDynamic(dynamic vm, ReservationDetailsModel reservationDetails, string reservationId)
         {
-            vm.ReservationId = reservationId;
+            vm.ReservationId = Guid.NewGuid(); // new reservation Id
             vm.CustomerId = reservationDetails.CustomerId;
             vm.HotelId = reservationDetails.HotelId;
             vm.CheckIn = reservationDetails.CheckIn;
             vm.CheckOut = reservationDetails.CheckOut;
             vm.PayAtHotel = reservationDetails.PayAtHotel;
+            vm.PayNow = reservationDetails.PayNow;
             vm.PaymentId = reservationDetails.PaymentId;
             vm.CustomerComments = reservationDetails.CustomerComments;
             vm.HotelName = reservationDetails.HotelName;
+            vm.UiState = reservationDetails.UiState;
         }
     }
 }

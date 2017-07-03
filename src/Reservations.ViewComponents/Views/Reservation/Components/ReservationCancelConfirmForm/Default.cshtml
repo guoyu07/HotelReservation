@@ -2,6 +2,9 @@
     <h4>Reservation details</h4>
 </div>
 <div>
+    <label>Reservation Status:</label>@Model.UiState
+</div>
+<div>
     <label>ReservationId:</label>@Model.ReservationId
 </div>
 <div>
@@ -19,8 +22,3 @@
 <div>
     <label>Customer Comments:</label>@Model.CustomerComments
 </div>
-
-@*<input type="hidden" id="CustomerId" name="CustomerId" value="@Model.CustomerId" />*@
-@*<input type="hidden" id="ReservationId" name="ReservationId" value="@Model.ReservationId" />*@
-@*<input type="hidden" id="HotelId" name="HotelId" value="@Model.HotelId" />
-@*<input type="hidden" id="PaymentId" name="PaymentId" value="@Model.PaymentId" />*@

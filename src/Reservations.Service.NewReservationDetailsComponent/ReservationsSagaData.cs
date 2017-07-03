@@ -17,7 +17,7 @@
         public string ReservationCancelationDate { get; set; }
         public bool PaymentComplete { get; set; }
         public bool ReservationSaved { get; set; }
-        public bool SagaCompleted { get; set; }
+        public bool ResrvationCompleted { get; set; }
 
         // ... and more
     }

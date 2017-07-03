@@ -6,11 +6,11 @@
 
     internal static class SeedData
     {
-        internal static List<ReservationDetails> Customers()
+        internal static List<ReservationDetailsViewModel> Reservations()
         {
-            return new List<ReservationDetails>()
+            return new List<ReservationDetailsViewModel>()
             {
-                new ReservationDetails()
+                new ReservationDetailsViewModel()
                 {
                     ReservationId = Guid.Parse("976c44a6-20df-4af7-b1ca-70798ab9df41"),
                     HotelId = Guid.Parse("06d2be19-c071-42b3-b18a-531212112ff4"),
@@ -20,6 +20,8 @@
                     PayAtHotel = true,
                     PayNow = false,
                     CustomerComments = "",
+                    UiState = "Completed",
+                    Id = Guid.NewGuid(),
                 },
             };
         }

@@ -43,6 +43,7 @@
     <Compile Include="Context\ResrvationsContext.cs" />
     <Compile Include="Migration\DatabaseInitializer.cs" />
     <Compile Include="Migration\SeedData.cs" />
+    <Compile Include="Models\ReservationDetailsViewModel.cs" />
     <Compile Include="Models\ReservationDetails.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

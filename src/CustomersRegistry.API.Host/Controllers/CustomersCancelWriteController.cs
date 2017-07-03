@@ -22,6 +22,8 @@
         {
             CancelReservationCustomerDetails cancelReservationCustomerDetails = JsonConvert.DeserializeObject<CancelReservationCustomerDetails>(jsonbody.ToString());
 
+            // add/update the customer to the viewModel as pending
+
             await _endpointSession.Send(cancelReservationCustomerDetails)
                 .ConfigureAwait(false);
 
